@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мероприятия - История белорусского изобразительного искусства</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Базовые настройки */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Viaoda Libre', serif;
+            line-height: 1.8;
+            color: #262E33;
+            background-color: #ACB5BC;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        /* ШАПКА САЙТА - КАК НА ГЛАВНОЙ СТРАНИЦЕ */
+        header {
+            position: relative;
+            height: 550px;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                        url('https://cdnn11.img.sputnik.by/img/07e8/04/1e/1085829530_0:0:1164:654_2072x0_60_0_0_097da5a67a31012f7ac7f58dc4b2acab.jpg') no-repeat center center;
+            background-size: cover;
+            margin-bottom: 40px;
+        }
+
+        /* Логотип и меню бургер - КАК НА ГЛАВНОЙ */
+        .nav-container {
+            position: relative;
+            z-index: 10;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .logo-circle, .menu-circle {
+            width: 65px;
+            height: 65px;
+            background-color: #FBF3DE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Viaoda Libre', serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: #262E33;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo-circle:hover, .menu-circle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .burger-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .burger-line {
+            width: 24px;
+            height: 3px;
+            background-color: #262E33;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* Меню при раскрытии - УМЕНЬШЕННОЕ */
+        .menu-content {
+            position: absolute;
+            top: 140px;
+            left: 0;
+            background-color: #FBF3DE;
+            border-radius: 12px;
+            padding: 14px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 180px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+            z-index: 99;
+            animation: menuSlide 0.3s ease-out;
+        }
+
+        @keyframes menuSlide {
+            from { opacity: 0; transform: translateY(-12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .menu-content.active {
+            display: flex;
+        }
+
+        .menu-content a {
+            color: #262E33;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-family: 'Viaoda Libre', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-content a:hover {
+            background-color: rgba(172, 181, 188, 0.3);
+            transform: translateX(4px);
+        }
+
+        .menu-content a i {
+            font-size: 14px;
+            width: 18px;
+            text-align: center;
+        }
+
+        .menu-content a.active {
+            background-color: #ACB5BC;
+            font-weight: bold;
+        }
+
+        /* Название страницы */
+        .page-title-container {
+            position: relative;
+            z-index: 5;
+            margin-bottom: 80px;
+            padding-top: 20px;
+            margin-top: -60px;
+            text-align: center;
+        }
+
+        .page-title-box {
+            background-color: rgba(118, 114, 114, 0.95);
+            border-radius: 25px;
+            padding: 35px 70px;
+            display: inline-block;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+            margin-top: -40px;
+            text-align: center;
+            max-width: 85%;
+            border: 3px solid rgba(251, 243, 222, 0.2);
+        }
+
+        .page-title {
+            font-size: 56px;
+            font-weight: bold;
+            color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+
+        .page-subtitle {
+            font-size: 26px;
+            color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            opacity: 0.9;
+            line-height: 1.4;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Вступление */
+        .intro-section {
+            background-color: #FBF3DE;
+            border-radius: 30px;
+            padding: 50px 60px;
+            margin-bottom: 80px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            text-align: center;
+            border: 3px solid rgba(172, 181, 188, 0.2);
+        }
+
+        .intro-text {
+            font-size: 22px;
+            color: #262E33;
+            line-height: 1.8;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* УПРОЩЕННЫЕ ФИЛЬТРЫ мероприятий */
+        .filters-section {
+            background-color: #FBF3DE;
+            border-radius: 30px;
+            padding: 40px 60px;
+            margin-bottom: 50px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            border: 3px solid rgba(172, 181, 188, 0.2);
+            text-align: center;
+        }
+
+        .filters-title {
+            font-size: 28px;
+            color: #262E33;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .filters-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background-color: #767272;
+            border-radius: 2px;
+        }
+
+        .filters-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .filter-group {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .filter-group h3 {
+            font-size: 20px;
+            color: #262E33;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #767272;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .filter-option:hover {
+            background-color: rgba(172, 181, 188, 0.3);
+        }
+
+        .filter-option.active {
+            background-color: #ACB5BC;
+            font-weight: bold;
+        }
+
+        .filter-option input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .filter-option label {
+            font-size: 16px;
+            color: #262E33;
+            cursor: pointer;
+            flex-grow: 1;
+        }
+
+        /* Кнопки фильтров */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 15px 35px;
+            background-color: #767272;
+            color: #FBF3DE;
+            border: none;
+            border-radius: 15px;
+            font-family: 'Viaoda Libre', serif;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .filter-btn:hover {
+            background-color: #ACB5BC;
+            color: #262E33;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .filter-reset {
+            background-color: #ACB5BC;
+            color: #262E33;
+        }
+
+        .filter-reset:hover {
+            background-color: #767272;
+            color: #FBF3DE;
+        }
+
+        /* Мероприятия */
+        .events-section {
+            margin-bottom: 100px;
+        }
+
+        .events-title {
+            font-size: 32px;
+            color: #262E33;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .events-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background-color: #767272;
+            border-radius: 2px;
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .event-card {
+            background-color: #FBF3DE;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .event-card:hover .event-image img {
+            transform: scale(1.1);
+        }
+
+        .event-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #767272;
+            color: #FBF3DE;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .event-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-title {
+            font-size: 24px;
+            color: #262E33;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            font-weight: bold;
+        }
+
+        .event-date {
+            font-size: 16px;
+            color: #767272;
+            margin-bottom: 5px;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .event-location {
+            font-size: 16px;
+            color: #767272;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .event-description {
+            font-size: 16px;
+            color: #262E33;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .event-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 2px solid rgba(172, 181, 188, 0.3);
+        }
+
+        .event-type {
+            font-size: 14px;
+            color: #767272;
+            background-color: rgba(172, 181, 188, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .event-btn {
+            background-color: #767272;
+            color: #FBF3DE;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 15px;
+            font-family: 'Viaoda Libre', serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .event-btn:hover {
+            background-color: #ACB5BC;
+            color: #262E33;
+            transform: translateY(-2px);
+        }
+
+        /* Постоянные выставки */
+        .permanent-section {
+            background-color: #FBF3DE;
+            border-radius: 30px;
+            padding: 50px 60px;
+            margin-bottom: 80px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            border: 3px solid rgba(172, 181, 188, 0.2);
+        }
+
+        .permanent-title {
+            font-size: 32px;
+            color: #262E33;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .permanent-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background-color: #767272;
+            border-radius: 2px;
+        }
+
+        .permanent-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .museum-card {
+            background-color: #ACB5BC;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .museum-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .museum-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #767272;
+            color: #FBF3DE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .museum-name {
+            font-size: 22px;
+            color: #262E33;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .museum-address {
+            font-size: 16px;
+            color: #767272;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .museum-hours {
+            font-size: 16px;
+            color: #262E33;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .museum-link {
+            display: inline-block;
+            background-color: #767272;
+            color: #FBF3DE;
+            padding: 10px 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-family: 'Viaoda Libre', serif;
+            font-size: 16px;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .museum-link:hover {
+            background-color: #FBF3DE;
+            color: #262E33;
+            transform: translateY(-2px);
+        }
+
+        /* Модальное окно с деталями мероприятия */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #FBF3DE;
+            border-radius: 30px;
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 5px solid #767272;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #767272;
+            color: #FBF3DE;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background-color: #ACB5BC;
+            color: #262E33;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 50px;
+        }
+
+        .modal-header {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .modal-image {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-title {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-title h2 {
+            font-size: 36px;
+            color: #262E33;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .modal-date {
+            font-size: 20px;
+            color: #767272;
+            margin-bottom: 10px;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-location {
+            font-size: 20px;
+            color: #767272;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-badges {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .modal-badge {
+            background-color: #ACB5BC;
+            color: #262E33;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .modal-section {
+            background-color: #ACB5BC;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .modal-section h3 {
+            font-size: 24px;
+            color: #262E33;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #767272;
+        }
+
+        .modal-section p {
+            font-size: 18px;
+            color: #262E33;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .modal-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .modal-section li {
+            font-size: 18px;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .modal-section li:before {
+            content: "▸";
+            color: #767272;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Подвал - УМЕНЬШЕННЫЙ */
+        footer {
+            background-color: #767272;
+            border-radius: 25px 25px 0 0;
+            padding: 50px 0 35px;
+            margin-top: 90px;
+            border-top: 3px solid rgba(172, 181, 188, 0.3);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            gap: 50px;
+        }
+
+        .footer-left, .footer-right {
+            flex: 1;
+        }
+
+        .footer-left {
+            text-align: left;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-logo {
+            font-size: 38px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #FBF3DE;
+            text-align: center;
+            width: 100%;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .footer-text {
+            font-size: 20px;
+            margin-bottom: 14px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .footer-contact {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .footer-contact a {
+            color: #FBF3DE;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding-bottom: 2px;
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer-contact a:hover {
+            color: #ACB5BC;
+            border-bottom-color: #ACB5BC;
+        }
+
+        .copyright {
+            font-size: 18px;
+            opacity: 0.7;
+            line-height: 1.4;
+            margin-top: 18px;
+        }
+
+        /* Кнопка "Наверх" */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #767272;
+            color: #FBF3DE;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            border: 3px solid #FBF3DE;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .scroll-top-btn.visible {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top-btn:hover {
+            background-color: #ACB5BC;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 40px;
+            }
+            
+            .events-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 30px;
+            }
+            
+            .permanent-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 25px;
+            }
+            
+            .modal-header {
+                flex-direction: column;
+            }
+            
+            .modal-image {
+                max-width: 100%;
+            }
+            
+            .modal-details {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .events-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 25px;
+            }
+            
+            .permanent-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .modal-body {
+                padding: 30px;
+            }
+            
+            .modal-title h2 {
+                font-size: 28px;
+            }
+            
+            .page-title {
+                font-size: 48px;
+            }
+            
+            .page-subtitle {
+                font-size: 24px;
+            }
+            
+            .intro-section, .filters-section, .permanent-section {
+                padding: 40px 45px;
+            }
+            
+            .filters-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-group {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 25px;
+            }
+            
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .page-title-box {
+                padding: 25px 40px;
+                margin-top: -30px;
+            }
+            
+            .page-title {
+                font-size: 40px;
+            }
+            
+            .page-subtitle {
+                font-size: 22px;
+            }
+            
+            .intro-section, .filters-section, .permanent-section {
+                padding: 40px 35px;
+            }
+            
+            .intro-text {
+                font-size: 20px;
+            }
+            
+            .events-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .permanent-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .event-image {
+                height: 220px;
+            }
+            
+            .modal-section {
+                padding: 20px;
+            }
+            
+            .modal-section h3 {
+                font-size: 22px;
+            }
+            
+            .modal-section p, .modal-section li {
+                font-size: 16px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .footer-left, .footer-right {
+                text-align: center;
+            }
+            
+            .scroll-top-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .logo-circle, .menu-circle {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+            }
+            
+            .page-title-box {
+                padding: 20px 30px;
+                margin-top: -20px;
+            }
+            
+            .page-title {
+                font-size: 34px;
+            }
+            
+            .page-subtitle {
+                font-size: 20px;
+            }
+            
+            .intro-section, .filters-section, .permanent-section {
+                padding: 35px 30px;
+                border-radius: 25px;
+            }
+            
+            .events-title, .permanent-title {
+                font-size: 28px;
+            }
+            
+            .event-card {
+                border-radius: 15px;
+            }
+            
+            .event-info {
+                padding: 20px;
+            }
+            
+            .event-title {
+                font-size: 20px;
+            }
+            
+            .event-description {
+                font-size: 14px;
+            }
+            
+            .museum-card {
+                padding: 25px;
+            }
+            
+            .museum-name {
+                font-size: 20px;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+            
+            .modal-title h2 {
+                font-size: 24px;
+            }
+            
+            .menu-content {
+                min-width: 160px;
+                top: 125px;
+                padding: 12px;
+            }
+            
+            .menu-content a {
+                font-size: 15px;
+                padding: 8px 16px;
+            }
+            
+            .footer-logo {
+                font-size: 32px;
+            }
+            
+            footer {
+                padding: 40px 0 25px;
+                border-radius: 20px 20px 0 0;
+                margin-top: 60px;
+            }
+            
+            .scroll-top-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <!-- Навигация -->
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo-circle">АХ</div>
+                <div class="menu-circle" id="menuBtn">
+                    <div class="burger-icon">
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                    </div>
+                </div>
+                
+                <div class="menu-content" id="menuContent">
+                    <a href="index.html"><i class="fas fa-home"></i> Главная</a>
+                    <a href="timeline.html"><i class="fas fa-clock"></i> Лента времени</a>
+                    <a href="artists.html"><i class="fas fa-palette"></i> Художники</a>
+                    <a href="artdirection.html"><i class="fas fa-directions"></i> Направления</a>
+                    <a href="paintings.html"><i class="fas fa-image"></i> Картины</a>
+                    <a href="events.html" class="active"><i class="fas fa-calendar-alt"></i> Мероприятия</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Кнопка "Наверх" -->
+    <div class="scroll-top-btn" id="scrollTopBtn">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Модальное окно с деталями мероприятия -->
+    <div class="modal-overlay" id="eventModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Контент будет заполнен JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Заголовок страницы -->
+        <section class="page-title-container">
+            <div class="page-title-box">
+                <h1 class="page-title">Мероприятия</h1>
+                <div class="page-subtitle">Актуальные выставки, музеи и культурные события Беларуси</div>
+            </div>
+        </section>
+
+        <!-- Вступление -->
+        <section class="intro-section">
+            <p class="intro-text">
+                Культурная жизнь Беларуси насыщена разнообразными событиями: от крупных международных выставок до камерных музейных проектов. На этой странице представлена актуальная информация о художественных мероприятиях, постоянных экспозициях музеев и временных выставках, которые проходят в разных городах страны. Здесь вы найдете всё, что нужно для планирования культурного досуга.
+            </p>
+        </section>
+
+        <!-- УПРОЩЕННЫЕ ФИЛЬТРЫ мероприятий (без периода) -->
+        <section class="filters-section">
+            <h2 class="filters-title">Фильтры мероприятий</h2>
+            
+            <div class="filters-container">
+                <div class="filter-group">
+                    <h3>Тип мероприятия</h3>
+                    <div class="filter-options">
+                        <div class="filter-option active" data-type="all">
+                            <input type="radio" id="type-all" name="event-type" checked>
+                            <label for="type-all">Все мероприятия</label>
+                        </div>
+                        <div class="filter-option" data-type="exhibition">
+                            <input type="radio" id="type-exhibition" name="event-type">
+                            <label for="type-exhibition">Выставки</label>
+                        </div>
+                        <div class="filter-option" data-type="festival">
+                            <input type="radio" id="type-festival" name="event-type">
+                            <label for="type-festival">Фестивали</label>
+                        </div>
+                        <div class="filter-option" data-type="lecture">
+                            <input type="radio" id="type-lecture" name="event-type">
+                            <label for="type-lecture">Лекции</label>
+                        </div>
+                        <div class="filter-option" data-type="masterclass">
+                            <input type="radio" id="type-masterclass" name="event-type">
+                            <label for="type-masterclass">Мастер-классы</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <h3>Город</h3>
+                    <div class="filter-options">
+                        <div class="filter-option active" data-city="all">
+                            <input type="radio" id="city-all" name="event-city" checked>
+                            <label for="city-all">Все города</label>
+                        </div>
+                        <div class="filter-option" data-city="minsk">
+                            <input type="radio" id="city-minsk" name="event-city">
+                            <label for="city-minsk">Минск</label>
+                        </div>
+                        <div class="filter-option" data-city="vitebsk">
+                            <input type="radio" id="city-vitebsk" name="event-city">
+                            <label for="city-vitebsk">Витебск</label>
+                        </div>
+                        <div class="filter-option" data-city="grodno">
+                            <input type="radio" id="city-grodno" name="event-city">
+                            <label for="city-grodno">Гродно</label>
+                        </div>
+                        <div class="filter-option" data-city="brest">
+                            <input type="radio" id="city-brest" name="event-city">
+                            <label for="city-brest">Брест</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Добавлены кнопки для фильтров -->
+            <div class="filter-buttons">
+                <button class="filter-btn" id="applyFilters">Применить фильтры</button>
+                <button class="filter-btn filter-reset" id="resetFilters">Сбросить фильтры</button>
+            </div>
+        </section>
+
+        <!-- Актуальные мероприятия -->
+        <section class="events-section">
+            <h2 class="events-title">Актуальные мероприятия</h2>
+            
+            <div class="events-container" id="eventsContainer">
+                <!-- Карточки мероприятий будут добавлены через JavaScript -->
+            </div>
+        </section>
+
+        <!-- Постоянные выставки и музеи -->
+        <section class="permanent-section">
+            <h2 class="permanent-title">Постоянные выставки и музеи</h2>
+            
+            <div class="permanent-container" id="permanentContainer">
+                <!-- Карточки музеев будут добавлены через JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Art Chronicle</div>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-text">© 2025 Art Chronicle. Все права защищены.</div>
+                    <div class="footer-text">Исследуйте сокровища белорусского искусства вместе с нами!</div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-contact">
+                        <a href="mailto:art@chronicle.by">art@chronicle.by</a>
+                    </div>
+                    <div class="footer-contact">+375 (29) 239-49-94</div>
+                    <div class="copyright">Проект "Арт-Хроника" посвящен истории белорусского изобразительного искусства</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Меню бургер
+        const menuBtn = document.getElementById('menuBtn');
+        const menuContent = document.getElementById('menuContent');
+        
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuContent.classList.toggle('active');
+            
+            const burgerLines = menuBtn.querySelectorAll('.burger-line');
+            if (menuContent.classList.contains('active')) {
+                burgerLines[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+                burgerLines[1].style.opacity = '0';
+                burgerLines[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+            } else {
+                burgerLines[0].style.transform = 'none';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'none';
+            }
+        });
+
+        // Закрыть меню при клике вне его
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.menu-circle') && !event.target.closest('.menu-content') && menuContent.classList.contains('active')) {
+                menuContent.classList.remove('active');
+                const burgerLines = menuBtn.querySelectorAll('.burger-line');
+                burgerLines[0].style.transform = 'none';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'none';
+            }
+        });
+
+        // Кнопка "Наверх"
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Данные мероприятий с обновленными изображениями
+        const eventsData = [
+            {
+                id: 11,
+                title: "Новогодняя выставка белорусских художников",
+                type: "exhibition",
+                city: "minsk",
+                date: "20.12.2025 - 15.01.2026",
+                location: "Национальная библиотека Беларуси, Минск",
+                description: "Выставка современных белорусских художников, посвященная новогодним и рождественским мотивам.",
+                image: "https://io.sb.by/storage01/iblock/357/357f6ac1350f7496c6598020ba7a42e4/2ebe75f9cf4ef5658cdf4becfc3023e6.jpg",
+                isPermanent: false,
+                startDate: new Date(2025, 11, 20),
+                details: {
+                    description: "Экспозиция представляет работы современных белорусских художников, вдохновленных зимними пейзажами, новогодними праздниками и рождественскими традициями.",
+                    highlights: "Живопись, графика, инсталляции на тему зимы и праздников.",
+                    price: "Взрослый - 8 руб., льготный - 4 руб.",
+                    schedule: "Ежедневно с 10:00 до 20:00, кроме 31 декабря и 1 января",
+                    contacts: "+375 (17) 293-28-33, info@nlb.by"
+                }
+            },
+            {
+                id: 12,
+                title: "Рождественский фестиваль искусств",
+                type: "festival",
+                city: "grodno",
+                date: "25.12.2025 - 10.01.2026",
+                location: "Гродненский драматический театр",
+                description: "Традиционный рождественский фестиваль, включающий выставки, концерты и театральные постановки.",
+                image: "https://tatmitropolia.ru/www/news/2021/1/1473529-215_b.jpg",
+                isPermanent: false,
+                startDate: new Date(2025, 11, 25),
+                details: {
+                    description: "Фестиваль, который ежегодно проходит в Гродно и объединяет различные виды искусства: театр, музыку, изобразительное искусство.",
+                    highlights: "Выставка рождественских вертепов, концерты органной музыки, спектакли для детей.",
+                    price: "Вход на выставки свободный, на концерты и спектакли - по билетам (от 10 руб.)",
+                    schedule: "Ежедневно с 12:00 до 21:00",
+                    contacts: "+375 (152) 72-14-12, theatre@grodno.by"
+                }
+            },
+            {
+                id: 13,
+                title: "Лекция «Современное искусство Беларуси: тенденции 2025»",
+                type: "lecture",
+                city: "minsk",
+                date: "10.01.2026, 19:00",
+                location: "Галерея современного искусства «Ў», Минск",
+                description: "Лекция о современных тенденциях в белорусском искусстве, новых именах и проектах 2025 года.",
+                image: "https://avatars.mds.yandex.net/i?id=ea3a67ecce9c7bb8bb9249cfe7885576_l-5235518-images-thumbs&n=13",
+                isPermanent: false,
+                startDate: new Date(2026, 0, 10),
+                details: {
+                    description: "Лекция посвящена итогам 2025 года в белорусском современном искусстве. Будут рассмотрены ключевые выставки, проекты и имена, которые определили художественную жизнь страны.",
+                    highlights: "Обзор выставок, анализ трендов, прогнозы на 2026 год.",
+                    price: "Вход свободный, требуется регистрация",
+                    schedule: "10 января 2026, 19:00 - 21:00",
+                    contacts: "+375 (29) 123-45-67, info@ygallery.by"
+                }
+            },
+            {
+                id: 14,
+                title: "Выставка зимних пейзажей",
+                type: "exhibition",
+                city: "vitebsk",
+                date: "22.12.2025 - 30.01.2026",
+                location: "Витебский художественный музей",
+                description: "Выставка белорусских художников, посвященная зимним пейзажам Беларуси.",
+                image: "https://сцки.рф/wp-content/uploads/2019/02/%D0%92%D1%8B%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B0-%D0%97%D0%B8%D0%BC%D0%BD%D0%B8%D0%B9-%D0%BF%D0%B5%D0%B9%D0%B7%D0%B0%D0%B6-1.jpg",
+                isPermanent: false,
+                startDate: new Date(2025, 11, 22),
+                details: {
+                    description: "Экспозиция представляет зимние пейзажи разных регионов Беларуси, выполненные в различных техниках и стилях.",
+                    highlights: "Работы современных белорусских художников, акварель, масло, графика.",
+                    price: "Взрослый - 7 руб., льготный - 3.5 руб.",
+                    schedule: "Вт-Вс: 10:00-18:00, Пн: выходной",
+                    contacts: "+375 (212) 36-28-39, artmuseum@vitebsk.by"
+                }
+            },
+            {
+                id: 15,
+                title: "Новогодний мастер-класс по росписи елочных игрушек",
+                type: "masterclass",
+                city: "brest",
+                date: "28.12.2025, 15:00",
+                location: "Брестский областной краеведческий музей",
+                description: "Мастер-класс по созданию и росписи традиционных елочных игрушек в белорусском стиле.",
+                image: "https://avatars.mds.yandex.net/i?id=c72dc39849fa188efecea6d55547fd3d_l-7777855-images-thumbs&n=13",
+                isPermanent: false,
+                startDate: new Date(2025, 11, 28),
+                details: {
+                    description: "Участники мастер-класса научатся создавать традиционные елочные игрушки с белорусскими орнаментами и символами.",
+                    highlights: "Работа с натуральными материалами, изучение традиционных орнаментов, создание собственной игрушки.",
+                    price: "Участие - 12 руб. (все материалы включены)",
+                    schedule: "28 декабря 2025, 15:00 - 17:00",
+                    contacts: "+375 (162) 20-00-12, museum@brest.by"
+                }
+            }
+        ];
+
+        // Данные постоянных музеев и выставок
+        const museumsData = [
+            {
+                id: 1,
+                name: "Национальный художественный музей Республики Беларусь",
+                city: "minsk",
+                address: "ул. Ленина, 20, Минск",
+                hours: "Вт-Вс: 11:00-19:00, Пн: выходной",
+                description: "Крупнейшее собрание белорусского и зарубежного искусства. Постоянная экспозиция охватывает период от иконописи до современного искусства.",
+                icon: "fas fa-landmark",
+                link: "https://www.artmuseum.by"
+            },
+            {
+                id: 2,
+                name: "Национальный исторический музей Республики Беларусь",
+                city: "minsk",
+                address: "ул. Карла Маркса, 12, Минск",
+                hours: "Вт-Вс: 11:00-19:00, Пн: выходной",
+                description: "Коллекция археологических находок, предметов быта, оружия и документов, отражающих историю Беларуси с древнейших времен.",
+                icon: "fas fa-history",
+                link: "https://www.histmuseum.by"
+            },
+            {
+                id: 3,
+                name: "Витебский художественный музей",
+                city: "vitebsk",
+                address: "ул. Ленина, 32, Витебск",
+                hours: "Вт-Вс: 10:00-18:00, Пн: выходной",
+                description: "Коллекция произведений витебской художественной школы, в том числе работы Юделя Пэна, учеников витебского художественного училища.",
+                icon: "fas fa-palette",
+                link: "http://artmuseum.vitebsk.by"
+            },
+            {
+                id: 4,
+                name: "Гродненский государственный историко-археологический музей",
+                city: "grodno",
+                address: "ул. Замковая, 22, Гродно",
+                hours: "Вт-Вс: 10:00-18:00, Пн: выходной",
+                description: "Экспозиция, посвященная истории Гродненщины, включая археологические находки, старопечатные книги, предметы декоративно-прикладного искусства.",
+                icon: "fas fa-archway",
+                link: "http://museum.grodno.by"
+            },
+            {
+                id: 5,
+                name: "Брестский областной краеведческий музей",
+                city: "brest",
+                address: "ул. Карла Маркса, 60, Брест",
+                hours: "Вт-Вс: 10:00-18:00, Пн: выходной",
+                description: "Экспозиция по истории и природе Брестской области, включая археологические находки, этнографические коллекции, документы.",
+                icon: "fas fa-book-open",
+                link: "http://brokm.by"
+            },
+            {
+                id: 6,
+                name: "Могилевский областной художественный музей им. П.В. Масленикова",
+                city: "minsk",
+                address: "ул. Миронова, 33, Могилев",
+                hours: "Вт-Вс: 10:00-18:00, Пн: выходной",
+                description: "Коллекция произведений белорусского искусства XX века, в том числе работы Павла Масленикова, уроженца Могилевской области.",
+                icon: "fas fa-paint-brush",
+                link: "http://maslenikov.museum.by"
+            },
+            {
+                id: 7,
+                name: "Музей истории города Минска",
+                city: "minsk",
+                address: "ул. Революционная, 10, Минск",
+                hours: "Вт-Вс: 11:00-19:00, Пн: выходной",
+                description: "Экспозиция, посвященная истории Минска от первого упоминания до современности. Коллекция включает предметы быта, документы, фотографии.",
+                icon: "fas fa-city",
+                link: "http://minskmuseum.by"
+            },
+            {
+                id: 8,
+                name: "Музей белорусского народного искусства в Раубичах",
+                city: "minsk",
+                address: "д. Раубичи, Минский район",
+                hours: "Вт-Вс: 10:00-17:00, Пн: выходной",
+                description: "Экспозиция традиционного белорусского искусства: ткачество, вышивка, керамика, деревянная скульптура, народный костюм.",
+                icon: "fas fa-people-arrows",
+                link: "http://raubichi.museum.by"
+            }
+        ];
+
+        // Инициализация страницы
+        const eventsContainer = document.getElementById('eventsContainer');
+        const permanentContainer = document.getElementById('permanentContainer');
+        const eventModal = document.getElementById('eventModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalBody = document.getElementById('modalBody');
+        const applyFiltersBtn = document.getElementById('applyFilters');
+        const resetFiltersBtn = document.getElementById('resetFilters');
+        
+        // Фильтры
+        const filterOptions = document.querySelectorAll('.filter-option');
+        
+        // Текущие выбранные фильтры
+        let selectedType = 'all';
+        let selectedCity = 'all';
+        
+        // Отображение карточек мероприятий
+        function displayEvents(events) {
+            eventsContainer.innerHTML = '';
+            
+            if (events.length === 0) {
+                eventsContainer.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <div style="font-size: 24px; color: #767272; margin-bottom: 20px;">
+                            <i class="fas fa-calendar-times" style="font-size: 48px; margin-bottom: 20px; display: block;"></i>
+                            Мероприятия не найдены
+                        </div>
+                        <p style="font-size: 18px; color: #262E33;">
+                            Попробуйте изменить параметры фильтрации или выбрать другие критерии поиска.
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+            
+            events.forEach(event => {
+                const card = document.createElement('div');
+                card.className = 'event-card';
+                card.dataset.id = event.id;
+                card.dataset.type = event.type;
+                card.dataset.city = event.city;
+                
+                card.innerHTML = `
+                    <div class="event-image">
+                        <img src="${event.image}" alt="${event.title}">
+                        <div class="event-badge">${getTypeName(event.type)}</div>
+                    </div>
+                    <div class="event-info">
+                        <h3 class="event-title">${event.title}</h3>
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i>
+                            ${event.date}
+                        </div>
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${event.location}
+                        </div>
+                        <p class="event-description">${event.description}</p>
+                        <div class="event-details">
+                            <span class="event-type">${getCityName(event.city)}</span>
+                            <button class="event-btn" data-id="${event.id}">Подробнее</button>
+                        </div>
+                    </div>
+                `;
+                
+                eventsContainer.appendChild(card);
+            });
+            
+            // Добавляем обработчики для кнопок "Подробнее"
+            document.querySelectorAll('.event-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const eventId = parseInt(btn.dataset.id);
+                    openEventModal(eventId);
+                });
+            });
+            
+            // Добавляем обработчики для клика по карточке
+            document.querySelectorAll('.event-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const eventId = parseInt(card.dataset.id);
+                    openEventModal(eventId);
+                });
+            });
+        }
+        
+        // Отображение постоянных музеев
+        function displayMuseums(museums) {
+            permanentContainer.innerHTML = '';
+            
+            museums.forEach(museum => {
+                const card = document.createElement('div');
+                card.className = 'museum-card';
+                
+                card.innerHTML = `
+                    <div class="museum-icon">
+                        <i class="${museum.icon}"></i>
+                    </div>
+                    <h3 class="museum-name">${museum.name}</h3>
+                    <div class="museum-address">
+                        <i class="fas fa-map-marker-alt"></i>
+                        ${museum.address}
+                    </div>
+                    <div class="museum-hours">
+                        <i class="far fa-clock"></i>
+                        ${museum.hours}
+                    </div>
+                    <p>${museum.description}</p>
+                    <a href="${museum.link}" target="_blank" class="museum-link">Посетить сайт</a>
+                `;
+                
+                permanentContainer.appendChild(card);
+            });
+        }
+        
+        // Получение названия типа мероприятия
+        function getTypeName(typeKey) {
+            const typeNames = {
+                exhibition: 'Выставка',
+                festival: 'Фестиваль',
+                lecture: 'Лекция',
+                masterclass: 'Мастер-класс'
+            };
+            return typeNames[typeKey] || 'Мероприятие';
+        }
+        
+        // Получение названия города
+        function getCityName(cityKey) {
+            const cityNames = {
+                minsk: 'Минск',
+                vitebsk: 'Витебск',
+                grodno: 'Гродно',
+                brest: 'Брест'
+            };
+            return cityNames[cityKey] || 'Беларусь';
+        }
+        
+        // Открытие модального окна с деталями мероприятия
+        function openEventModal(eventId) {
+            const event = eventsData.find(e => e.id === eventId);
+            
+            if (!event) return;
+            
+            modalBody.innerHTML = `
+                <div class="modal-header">
+                    <div class="modal-image">
+                        <img src="${event.image}" alt="${event.title}">
+                    </div>
+                    <div class="modal-title">
+                        <h2>${event.title}</h2>
+                        <div class="modal-date">
+                            <i class="far fa-calendar"></i>
+                            ${event.date}
+                        </div>
+                        <div class="modal-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${event.location}
+                        </div>
+                        <div class="modal-badges">
+                            <span class="modal-badge">${getTypeName(event.type)}</span>
+                            <span class="modal-badge">${getCityName(event.city)}</span>
+                            ${event.isPermanent ? '<span class="modal-badge">Постоянная</span>' : '<span class="modal-badge">Временная</span>'}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-details">
+                    <div class="modal-section">
+                        <h3>Описание</h3>
+                        <p>${event.description}</p>
+                        <p>${event.details.description}</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Основная информация</h3>
+                        <ul>
+                            <li><strong>Особенности:</strong> ${event.details.highlights}</li>
+                            <li><strong>Стоимость:</strong> ${event.details.price}</li>
+                            <li><strong>График работы:</strong> ${event.details.schedule}</li>
+                            <li><strong>Контакты:</strong> ${event.details.contacts}</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="modal-section" style="grid-column: 1 / -1; margin-top: 20px;">
+                    <h3>Как добраться</h3>
+                    <p>Мероприятие проходит по адресу: ${event.location}. Рекомендуем использовать общественный транспорт или такси. Для автомобилистов рядом есть платные парковки.</p>
+                    <p style="margin-top: 15px;"><strong>Совет:</strong> Рекомендуем приобретать билеты заранее, так как на популярные мероприятия может не быть свободных мест.</p>
+                </div>
+            `;
+            
+            eventModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Закрытие модального окна
+        modalClose.addEventListener('click', () => {
+            eventModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Закрытие модального окна при клике вне его
+        eventModal.addEventListener('click', (e) => {
+            if (e.target === eventModal) {
+                eventModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Закрытие модального окна по клавише Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && eventModal.classList.contains('active')) {
+                eventModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Фильтрация мероприятий
+        function filterEvents() {
+            let filteredEvents = eventsData;
+            
+            // Фильтрация по типу
+            if (selectedType !== 'all') {
+                filteredEvents = filteredEvents.filter(event => event.type === selectedType);
+            }
+            
+            // Фильтрация по городу
+            if (selectedCity !== 'all') {
+                filteredEvents = filteredEvents.filter(event => event.city === selectedCity);
+            }
+            
+            displayEvents(filteredEvents);
+            
+            // Визуальная обратная связь
+            applyFiltersBtn.textContent = '✓ Фильтры применены';
+            applyFiltersBtn.style.backgroundColor = '#4CAF50';
+            
+            setTimeout(() => {
+                applyFiltersBtn.textContent = 'Применить фильтры';
+                applyFiltersBtn.style.backgroundColor = '#767272';
+            }, 1500);
+        }
+        
+        // Сброс фильтров
+        function resetFilters() {
+            // Сбрасываем выбранные фильтры
+            selectedType = 'all';
+            selectedCity = 'all';
+            
+            // Обновляем UI фильтров
+            filterOptions.forEach(option => {
+                option.classList.remove('active');
+                const input = option.querySelector('input');
+                if (input) {
+                    input.checked = false;
+                }
+            });
+            
+            // Устанавливаем активными опции "Все"
+            const allTypeOption = document.querySelector('.filter-option[data-type="all"]');
+            const allCityOption = document.querySelector('.filter-option[data-city="all"]');
+            
+            if (allTypeOption) {
+                allTypeOption.classList.add('active');
+                allTypeOption.querySelector('input').checked = true;
+            }
+            
+            if (allCityOption) {
+                allCityOption.classList.add('active');
+                allCityOption.querySelector('input').checked = true;
+            }
+            
+            // Отображаем все мероприятия
+            displayEvents(eventsData);
+            
+            // Визуальная обратная связь
+            resetFiltersBtn.textContent = '✓ Фильтры сброшены';
+            resetFiltersBtn.style.backgroundColor = '#4CAF50';
+            
+            setTimeout(() => {
+                resetFiltersBtn.textContent = 'Сбросить фильтры';
+                resetFiltersBtn.style.backgroundColor = '#ACB5BC';
+            }, 1500);
+        }
+        
+        // Обработчики для фильтров (только выбор без применения)
+        filterOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                // Убираем активный класс у всех опций в этой группе
+                const group = option.closest('.filter-options');
+                group.querySelectorAll('.filter-option').forEach(opt => {
+                    opt.classList.remove('active');
+                    opt.querySelector('input').checked = false;
+                });
+                
+                // Добавляем активный класс к выбранной опции
+                option.classList.add('active');
+                option.querySelector('input').checked = true;
+                
+                // Обновляем выбранные фильтры
+                if (option.dataset.type) {
+                    selectedType = option.dataset.type;
+                }
+                if (option.dataset.city) {
+                    selectedCity = option.dataset.city;
+                }
+            });
+        });
+        
+        // Обработчики для кнопок
+        applyFiltersBtn.addEventListener('click', filterEvents);
+        resetFiltersBtn.addEventListener('click', resetFilters);
+        
+        // Инициализация страницы при загрузке
+        document.addEventListener('DOMContentLoaded', () => {
+            // Отображаем все мероприятия
+            displayEvents(eventsData);
+            
+            // Отображаем музеи
+            displayMuseums(museumsData);
+            
+            // Добавляем класс active для текущей страницы в меню
+            document.querySelectorAll('.menu-content a').forEach(link => {
+                if (link.getAttribute('href') === 'events.html') {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Плавное появление элементов
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+        
+        // Анимация для элементов при загрузке
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(30px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .event-card, .museum-card {
+                animation: fadeInUp 0.8s ease forwards;
+                opacity: 0;
+            }
+            
+            .event-card:nth-child(1) { animation-delay: 0.05s; }
+            .event-card:nth-child(2) { animation-delay: 0.1s; }
+            .event-card:nth-child(3) { animation-delay: 0.15s; }
+            .event-card:nth-child(4) { animation-delay: 0.2s; }
+            .event-card:nth-child(5) { animation-delay: 0.25s; }
+            
+            .museum-card:nth-child(1) { animation-delay: 0.3s; }
+            .museum-card:nth-child(2) { animation-delay: 0.35s; }
+            .museum-card:nth-child(3) { animation-delay: 0.4s; }
+            .museum-card:nth-child(4) { animation-delay: 0.45s; }
+            .museum-card:nth-child(5) { animation-delay: 0.5s; }
+            .museum-card:nth-child(6) { animation-delay: 0.55s; }
+            .museum-card:nth-child(7) { animation-delay: 0.6s; }
+            .museum-card:nth-child(8) { animation-delay: 0.65s; }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

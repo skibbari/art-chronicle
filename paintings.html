@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Картины - История белорусского изобразительного искусства</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Базовые настройки */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Viaoda Libre', serif;
+            line-height: 1.8;
+            color: #262E33;
+            background-color: #ACB5BC;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        /* ШАПКА САЙТА - КАК НА ГЛАВНОЙ СТРАНИЦЕ */
+        header {
+            position: relative;
+            height: 550px;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                        url('https://i.ytimg.com/vi/MpqVv3bnAF4/maxresdefault.jpg') no-repeat center center;
+            background-size: cover;
+            margin-bottom: 40px;
+        }
+
+        /* Логотип и меню бургер - КАК НА ГЛАВНОЙ */
+        .nav-container {
+            position: relative;
+            z-index: 10;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .logo-circle, .menu-circle {
+            width: 65px;
+            height: 65px;
+            background-color: #FBF3DE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Viaoda Libre', serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: #262E33;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo-circle:hover, .menu-circle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .burger-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .burger-line {
+            width: 24px;
+            height: 3px;
+            background-color: #262E33;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* Меню при раскрытии - УМЕНЬШЕННОЕ */
+        .menu-content {
+            position: absolute;
+            top: 140px;
+            left: 0;
+            background-color: #FBF3DE;
+            border-radius: 12px;
+            padding: 14px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 180px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+            z-index: 99;
+            animation: menuSlide 0.3s ease-out;
+        }
+
+        @keyframes menuSlide {
+            from { opacity: 0; transform: translateY(-12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .menu-content.active {
+            display: flex;
+        }
+
+        .menu-content a {
+            color: #262E33;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-family: 'Viaoda Libre', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-content a:hover {
+            background-color: rgba(172, 181, 188, 0.3);
+            transform: translateX(4px);
+        }
+
+        .menu-content a i {
+            font-size: 14px;
+            width: 18px;
+            text-align: center;
+        }
+
+        .menu-content a.active {
+            background-color: #ACB5BC;
+            font-weight: bold;
+        }
+
+        /* Название страницы */
+        .page-title-container {
+            position: relative;
+            z-index: 5;
+            margin-bottom: 80px;
+            padding-top: 20px;
+            margin-top: -60px;
+            text-align: center;
+        }
+
+        .page-title-box {
+            background-color: rgba(118, 114, 114, 0.95);
+            border-radius: 25px;
+            padding: 35px 70px;
+            display: inline-block;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+            margin-top: -40px;
+            text-align: center;
+            max-width: 85%;
+            border: 3px solid rgba(251, 243, 222, 0.2);
+        }
+
+        .page-title {
+            font-size: 56px;
+            font-weight: bold;
+            color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+
+        .page-subtitle {
+            font-size: 26px;
+            color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            opacity: 0.9;
+            line-height: 1.4;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Вступление */
+        .intro-section {
+            background-color: #FBF3DE;
+            border-radius: 30px;
+            padding: 50px 60px;
+            margin-bottom: 80px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            text-align: center;
+            border: 3px solid rgba(172, 181, 188, 0.2);
+        }
+
+        .intro-text {
+            font-size: 22px;
+            color: #262E33;
+            line-height: 1.8;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Фильтры галереи */
+        .filters-section {
+            background-color: #FBF3DE;
+            border-radius: 25px;
+            padding: 30px 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid rgba(172, 181, 188, 0.2);
+        }
+
+        .filters-title {
+            font-size: 28px;
+            color: #262E33;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .filters-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-size: 18px;
+            color: #767272;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .filter-select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #ACB5BC;
+            border-radius: 15px;
+            background-color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            font-size: 16px;
+            color: #262E33;
+            outline: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-select:hover {
+            border-color: #767272;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .filter-select:focus {
+            border-color: #767272;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .filter-btn {
+            padding: 15px 35px;
+            background-color: #767272;
+            color: #FBF3DE;
+            border: none;
+            border-radius: 15px;
+            font-family: 'Viaoda Libre', serif;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .filter-btn:hover {
+            background-color: #ACB5BC;
+            color: #262E33;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        .filter-reset {
+            background-color: #ACB5BC;
+            color: #262E33;
+        }
+
+        .filter-reset:hover {
+            background-color: #767272;
+            color: #FBF3DE;
+        }
+
+        /* Галерея картин */
+        .gallery-section {
+            margin-bottom: 100px;
+        }
+
+        .gallery-title {
+            font-size: 32px;
+            color: #262E33;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .gallery-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background-color: #767272;
+            border-radius: 2px;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .painting-card {
+            background-color: #FBF3DE;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .painting-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+
+        .painting-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .painting-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .painting-card:hover .painting-image img {
+            transform: scale(1.1);
+        }
+
+        .painting-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #767272;
+            color: #FBF3DE;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .painting-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .painting-title {
+            font-size: 24px;
+            color: #262E33;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            font-weight: bold;
+        }
+
+        .painting-artist {
+            font-size: 18px;
+            color: #767272;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .painting-year {
+            font-size: 16px;
+            color: #767272;
+            margin-bottom: 15px;
+        }
+
+        .painting-description {
+            font-size: 16px;
+            color: #262E33;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .painting-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 2px solid rgba(172, 181, 188, 0.3);
+        }
+
+        .painting-era {
+            font-size: 14px;
+            color: #767272;
+            background-color: rgba(172, 181, 188, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .painting-btn {
+            background-color: #767272;
+            color: #FBF3DE;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 15px;
+            font-family: 'Viaoda Libre', serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .painting-btn:hover {
+            background-color: #ACB5BC;
+            color: #262E33;
+            transform: translateY(-2px);
+        }
+
+        /* Модальное окно с деталями картины */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: #FBF3DE;
+            border-radius: 30px;
+            max-width: 1000px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 5px solid #767272;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: #767272;
+            color: #FBF3DE;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background-color: #ACB5BC;
+            color: #262E33;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 50px;
+        }
+
+        .modal-header {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .modal-image {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-title {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-title h2 {
+            font-size: 36px;
+            color: #262E33;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .modal-artist {
+            font-size: 24px;
+            color: #767272;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .modal-year {
+            font-size: 20px;
+            color: #767272;
+            margin-bottom: 20px;
+        }
+
+        .modal-badges {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .modal-badge {
+            background-color: #ACB5BC;
+            color: #262E33;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .modal-section {
+            background-color: #ACB5BC;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .modal-section h3 {
+            font-size: 24px;
+            color: #262E33;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #767272;
+        }
+
+        .modal-section p {
+            font-size: 18px;
+            color: #262E33;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .modal-section ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .modal-section li {
+            font-size: 18px;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .modal-section li:before {
+            content: "▸";
+            color: #767272;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Подвал - УМЕНЬШЕННЫЙ */
+        footer {
+            background-color: #767272;
+            border-radius: 25px 25px 0 0;
+            padding: 50px 0 35px;
+            margin-top: 90px;
+            border-top: 3px solid rgba(172, 181, 188, 0.3);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            gap: 50px;
+        }
+
+        .footer-left, .footer-right {
+            flex: 1;
+        }
+
+        .footer-left {
+            text-align: left;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-logo {
+            font-size: 38px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #FBF3DE;
+            text-align: center;
+            width: 100%;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .footer-text {
+            font-size: 20px;
+            margin-bottom: 14px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .footer-contact {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .footer-contact a {
+            color: #FBF3DE;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding-bottom: 2px;
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer-contact a:hover {
+            color: #ACB5BC;
+            border-bottom-color: #ACB5BC;
+        }
+
+        .copyright {
+            font-size: 18px;
+            opacity: 0.7;
+            line-height: 1.4;
+            margin-top: 18px;
+        }
+
+        /* Кнопка "Наверх" */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #767272;
+            color: #FBF3DE;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            border: 3px solid #FBF3DE;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .scroll-top-btn.visible {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top-btn:hover {
+            background-color: #ACB5BC;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 40px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 30px;
+            }
+            
+            .modal-header {
+                flex-direction: column;
+            }
+            
+            .modal-image {
+                max-width: 100%;
+            }
+            
+            .modal-details {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 25px;
+            }
+            
+            .filters-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-group {
+                min-width: 100%;
+            }
+            
+            .modal-body {
+                padding: 30px;
+            }
+            
+            .modal-title h2 {
+                font-size: 28px;
+            }
+            
+            .page-title {
+                font-size: 48px;
+            }
+            
+            .page-subtitle {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 25px;
+            }
+            
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .page-title-box {
+                padding: 25px 40px;
+                margin-top: -30px;
+            }
+            
+            .page-title {
+                font-size: 40px;
+            }
+            
+            .page-subtitle {
+                font-size: 22px;
+            }
+            
+            .intro-section {
+                padding: 40px 35px;
+            }
+            
+            .intro-text {
+                font-size: 20px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .painting-image {
+                height: 250px;
+            }
+            
+            .modal-section {
+                padding: 20px;
+            }
+            
+            .modal-section h3 {
+                font-size: 22px;
+            }
+            
+            .modal-section p, .modal-section li {
+                font-size: 16px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .footer-left, .footer-right {
+                text-align: center;
+            }
+            
+            .scroll-top-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .logo-circle, .menu-circle {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+            }
+            
+            .page-title-box {
+                padding: 20px 30px;
+                margin-top: -20px;
+            }
+            
+            .page-title {
+                font-size: 34px;
+            }
+            
+            .page-subtitle {
+                font-size: 20px;
+            }
+            
+            .intro-section {
+                padding: 35px 30px;
+                border-radius: 25px;
+            }
+            
+            .filters-section {
+                padding: 25px 30px;
+                border-radius: 20px;
+            }
+            
+            .filters-title {
+                font-size: 24px;
+            }
+            
+            .filter-select {
+                padding: 12px 15px;
+                font-size: 15px;
+            }
+            
+            .filter-btn {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+            
+            .painting-card {
+                border-radius: 15px;
+            }
+            
+            .painting-info {
+                padding: 20px;
+            }
+            
+            .painting-title {
+                font-size: 20px;
+            }
+            
+            .painting-artist {
+                font-size: 16px;
+            }
+            
+            .painting-description {
+                font-size: 14px;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+            
+            .modal-title h2 {
+                font-size: 24px;
+            }
+            
+            .modal-artist {
+                font-size: 18px;
+            }
+            
+            .modal-year {
+                font-size: 16px;
+            }
+            
+            .menu-content {
+                min-width: 160px;
+                top: 125px;
+                padding: 12px;
+            }
+            
+            .menu-content a {
+                font-size: 15px;
+                padding: 8px 16px;
+            }
+            
+            .footer-logo {
+                font-size: 32px;
+            }
+            
+            footer {
+                padding: 40px 0 25px;
+                border-radius: 20px 20px 0 0;
+                margin-top: 60px;
+            }
+            
+            .scroll-top-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <!-- Навигация -->
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo-circle">АХ</div>
+                <div class="menu-circle" id="menuBtn">
+                    <div class="burger-icon">
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                    </div>
+                </div>
+                
+                <div class="menu-content" id="menuContent">
+    <a href="index.html"><i class="fas fa-home"></i> Главная</a>
+    <a href="timeline.html"><i class="fas fa-clock"></i> Лента времени</a>
+    <a href="artists.html"><i class="fas fa-palette"></i> Художники</a>
+    <a href="artdirection.html"><i class="fas fa-directions"></i> Направления</a>
+    <a href="paintings.html" class="active"><i class="fas fa-image"></i> Картины</a>
+    <a href="events.html"><i class="fas fa-calendar-alt"></i> Мероприятия</a>
+</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Кнопка "Наверх" -->
+    <div class="scroll-top-btn" id="scrollTopBtn">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Модальное окно с деталями картины -->
+    <div class="modal-overlay" id="paintingModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Контент будет заполнен JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Заголовок страницы -->
+        <section class="page-title-container">
+            <div class="page-title-box">
+                <h1 class="page-title">Картины</h1>
+                <div class="page-subtitle">Виртуальная галерея белорусского изобразительного искусства</div>
+            </div>
+        </section>
+
+        <!-- Вступление -->
+        <section class="intro-section">
+            <p class="intro-text">
+                Добро пожаловать в виртуальную галерею белорусского изобразительного искусства. Здесь вы найдете коллекцию из 18 картин, созданных белорусскими художниками от средневековья до наших дней. Каждое произведение сопровождается подробным описанием, информацией о художнике и историческим контекстом.
+            </p>
+        </section>
+
+        <!-- Фильтры галереи -->
+        <section class="filters-section">
+            <h2 class="filters-title">Фильтры галереи</h2>
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="era-filter">Эпоха</label>
+                    <select class="filter-select" id="era-filter">
+                        <option value="all">Все эпохи</option>
+                        <option value="medieval">Средневековье (XII-XV вв.)</option>
+                        <option value="renaissance">Ренессанс (XVI в.)</option>
+                        <option value="baroque">Барокко (XVII-XVIII вв.)</option>
+                        <option value="classicism">Классицизм (XVIII-XIX вв.)</option>
+                        <option value="romanticism">Романтизм (XIX в.)</option>
+                        <option value="avantgarde">Авангард (XX в.)</option>
+                        <option value="contemporary">Современность (XX-XXI вв.)</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="artist-filter">Художник</label>
+                    <select class="filter-select" id="artist-filter">
+                        <option value="all">Все художники</option>
+                        <option value="chagall">Марк Шагал</option>
+                        <option value="savitsky">Михаил Савицкий</option>
+                        <option value="dantsig">Май Данциг</option>
+                        <option value="khrutsky">Иван Хруцкий</option>
+                        <option value="orda">Наполеон Орда</option>
+                        <option value="tsvirko">Виталий Цвирко</option>
+                        <option value="podolinsky">Михаил Подолинский</option>
+                        <option value="other">Другие художники</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="style-filter">Стиль</label>
+                    <select class="filter-select" id="style-filter">
+                        <option value="all">Все стили</option>
+                        <option value="icon">Иконопись</option>
+                        <option value="portrait">Портрет</option>
+                        <option value="landscape">Пейзаж</option>
+                        <option value="still-life">Натюрморт</option>
+                        <option value="historical">Историческая живопись</option>
+                        <option value="avantgarde">Авангард</option>
+                        <option value="realism">Реализм</option>
+                        <option value="impressionism">Импрессионизм</option>
+                        <option value="modern">Модерн</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="filter-btn" id="applyFilters">Применить фильтры</button>
+                <button class="filter-btn filter-reset" id="resetFilters">Сбросить фильтры</button>
+            </div>
+        </section>
+
+        <!-- Галерея картин -->
+        <section class="gallery-section">
+            <h2 class="gallery-title">Коллекция картин (18 произведений)</h2>
+            
+            <div class="gallery-container" id="galleryContainer">
+                <!-- Карточки картин будут добавлены через JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Art Chronicle</div>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-text">© 2025 Art Chronicle. Все права защищены.</div>
+                    <div class="footer-text">Исследуйте сокровища белорусского искусства вместе с нами!</div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-contact">
+                        <a href="mailto:art@chronicle.by">art@chronicle.by</a>
+                    </div>
+                    <div class="footer-contact">+375 (29) 239-49-94</div>
+                    <div class="copyright">Проект "Арт-Хроника" посвящен истории белорусского изобразительного искусства</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Меню бургер
+        const menuBtn = document.getElementById('menuBtn');
+        const menuContent = document.getElementById('menuContent');
+        
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuContent.classList.toggle('active');
+            
+            const burgerLines = menuBtn.querySelectorAll('.burger-line');
+            if (menuContent.classList.contains('active')) {
+                burgerLines[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+                burgerLines[1].style.opacity = '0';
+                burgerLines[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+            } else {
+                burgerLines[0].style.transform = 'none';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'none';
+            }
+        });
+
+        // Закрыть меню при клике вне его
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.menu-circle') && !event.target.closest('.menu-content') && menuContent.classList.contains('active')) {
+                menuContent.classList.remove('active');
+                const burgerLines = menuBtn.querySelectorAll('.burger-line');
+                burgerLines[0].style.transform = 'none';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'none';
+            }
+        });
+
+        // Кнопка "Наверх"
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Данные картин для галереи - 18 картин (с выполненными заменами)
+        const paintingsData = [
+            {
+                id: 1,
+                title: "Я и деревня",
+                artist: "Марк Шагал",
+                year: "1911",
+                era: "avantgarde",
+                artistFilter: "chagall",
+                style: "avantgarde",
+                image: "https://www.artchive.com/wp-content/uploads/2023/04/I-and-the-Village-Chagall-Marc-1911-2-1.jpg",
+                description: "Одна из самых известных работ Марка Шагала, созданная в Париже. Картина отражает ностальгию художника по родному Витебску.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "192 × 151 см",
+                    location: "Музей современного искусства, Нью-Йорк",
+                    period: "Парижский период творчества",
+                    history: "Картина была написана в Париже, куда Шагал приехал в 1910 году. Работа сочетает элементы кубизма и фовизма с уникальным поэтическим видением художника."
+                }
+            },
+            {
+                id: 2,
+                title: "Портрет молодой женщины с корзинкой",
+                artist: "Неизвестный белорусский художник",
+                year: "XIX век",
+                era: "romanticism",
+                artistFilter: "other",
+                style: "portrait",
+                image: "https://vsdn.ru/images/data/mus/70365_big_1391767410.jpg",
+                description: "Портрет молодой женщины в традиционном белорусском наряде с корзинкой цветов.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "Неизвестно",
+                    location: "Национальный художественный музей Республики Беларусь",
+                    period: "XIX век",
+                    history: "Картина представляет пример портретной живописи XIX века в Беларуси, демонстрирующая интерес к народным костюмам и традициям."
+                }
+            },
+            {
+                id: 3,
+                title: "Замок в Лиде",
+                artist: "Наполеон Орда",
+                year: "1876",
+                era: "romanticism",
+                artistFilter: "orda",
+                style: "landscape",
+                image: "https://web.archive.org/web/20170113021532im_/http://negnevichi.by/sites/default/files/u10940/lida.png",
+                description: "Акварельное изображение Лидского замка - одного из старейших замков Беларуси.",
+                details: {
+                    technique: "Акварель, бумага",
+                    size: "31 × 44 см",
+                    location: "Национальный музей в Варшаве",
+                    period: "Период путешествий по бывшим землям Речи Посполитой",
+                    history: "Часть серии работ, созданных во время путешествий Орды по историческим местам Беларуси, Литвы, Украины и Польши."
+                }
+            },
+            {
+                id: 4,
+                title: "Труженики муз",
+                artist: "Леонид Щемелев",
+                year: "1975",
+                era: "contemporary",
+                artistFilter: "other",
+                style: "landscape",
+                image: "https://s15.stc.yc.kpcdn.net/share/i/4/2520323/wr-750.webp",
+                description: "Картина, изображающая творческих людей, занятых искусством.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "Неизвестно",
+                    location: "Частная коллекция",
+                    period: "Творчество 1970-х годов",
+                    history: "Картина была создана в 1975 году и отражает тему искусства и творчества в советское время."
+                }
+            },
+            {
+                id: 5,
+                title: "Портрет Льва Сапеги",
+                artist: "Михаил Подолинский",
+                year: "1819",
+                era: "classicism",
+                artistFilter: "podolinsky",
+                style: "portrait",
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Le%C5%AD_Sapieha._%D0%9B%D0%B5%D1%9E_%D0%A1%D0%B0%D0%BF%D0%B5%D0%B3%D0%B0_%281616%29.jpg/960px-Le%C5%AD_Sapieha._%D0%9B%D0%B5%D1%9E_%D0%A1%D0%B0%D0%BF%D0%B5%D0%B3%D0%B0_%281616%29.jpg",
+                description: "Портрет канцлера Великого княжества Литовского Льва Сапеги работы Михаила Подолинского.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "Неизвестно",
+                    location: "Национальный музей в Варшаве",
+                    period: "Классицизм",
+                    history: "Портрет создан в стиле классицизма, характерном для начала XIX века."
+                }
+            },
+            {
+                id: 6,
+                title: "Князь Витовт",
+                artist: "Неизвестный белорусский художник",
+                year: "XIX век",
+                era: "romanticism",
+                artistFilter: "other",
+                style: "historical",
+                image: "https://i.pinimg.com/736x/a1/59/b5/a159b5a2a71eeffa90b180fd456a7ed5.jpg",
+                description: "Портрет великого князя литовского Витовта.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "Неизвестно",
+                    location: "Национальный музей в Варшаве",
+                    period: "Историческая живопись XIX века",
+                    history: "Картина создана в период интереса к национальной истории и является примером исторической живописи XIX века."
+                }
+            },
+            {
+                id: 7,
+                title: "Зимний пейзаж",
+                artist: "Виталий Цвирко",
+                year: "1970-е",
+                era: "contemporary",
+                artistFilter: "tsvirko",
+                style: "landscape",
+                image: "https://i.pinimg.com/originals/ad/58/70/ad587052166819562aa733f79441168c.jpg",
+                description: "Зимний пейзаж, изображающий заснеженную белорусскую природу.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "60 × 80 см",
+                    location: "Национальный художественный музей Республики Беларусь",
+                    period: "Творчество 1970-х годов",
+                    history: "Картина была создана в 1970-х годах и отражает любовь художника к зимним мотивам."
+                }
+            },
+            {
+                id: 8,
+                title: "Цифры на сердце",
+                artist: "Михаил Савицкий",
+                year: "1974",
+                era: "contemporary",
+                artistFilter: "savitsky",
+                style: "realism",
+                image: "https://gorodvitebsk.by/data/data/news_26130/-.jpg-1_1.jpg",
+                description: "Символическая работа Михаила Савицкого, посвященная памяти жертв войны.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "150 × 120 см",
+                    location: "Национальный художественный музей Республики Беларусь",
+                    period: "Творчество 1970-х годов",
+                    history: "Картина стала символом памяти о жертвах войны и входит в цикл работ о Великой Отечественной войне."
+                }
+            },
+            {
+                id: 9,
+                title: "Красное и черное",
+                artist: "Май Данциг",
+                year: "1970-е",
+                era: "contemporary",
+                artistFilter: "dantsig",
+                style: "realism",
+                image: "https://img.belta.by/uploads/2025/2025-05-01-Images/33434424/krasnoe-i-chernoe-Maja-Dantsiga-14.jpg",
+                description: "Автопортрет известного белорусского художника, представителя \"сурового стиля\".",
+                details: {
+                    technique: "Масло, холст",
+                    size: "Неизвестно",
+                    location: "Частная коллекция",
+                    period: "Творчество 1970-х годов",
+                    history: "Представляет художника в момент творческого процесса, отражает его индивидуальный стиль и подход к живописи."
+                }
+            },
+            {
+                id: 10,
+                title: "Свадьба",
+                artist: "Марк Шагал",
+                year: "1910",
+                era: "avantgarde",
+                artistFilter: "chagall",
+                style: "avantgarde",
+                image: "https://artchive.ru/res/media/img/ox800/work/53b/446199.jpg",
+                description: "Ранняя работа Шагала, изображающая свадебную сцену в характерной для художника манере.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "99 × 72 см",
+                    location: "Музей современного искусства, Нью-Йорк",
+                    period: "Ранний период творчества",
+                    history: "Одна из первых значительных работ Шагала, созданная до его отъезда в Париж."
+                }
+            },
+            {
+                id: 11,
+                title: "Белорусский пейзаж",
+                artist: "Виталий Цвирко",
+                year: "1979",
+                era: "contemporary",
+                artistFilter: "tsvirko",
+                style: "landscape",
+                image: "https://hvali.by/wp-content/gallery/vitaliy-tsvirko/vesnv-50-70-dsp-m-1979-g.jpg",
+                description: "Живописный белорусский пейзаж, изображающий природу Беларуси в характерной для Цвирко манере.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "50 × 70 см",
+                    location: "Частная коллекция",
+                    period: "Творчество 1970-х годов",
+                    history: "Картина была создана в 1979 году и является типичным примером пейзажной живописи Виталия Цвирко."
+                }
+            },
+            {
+                id: 12,
+                title: "Цветы и фрукты",
+                artist: "Иван Хруцкий",
+                year: "1840",
+                era: "romanticism",
+                artistFilter: "khrutsky",
+                style: "still-life",
+                image: "https://planetabelarus.by/upload/medialibrary/330/531hjkvh09qnnr0nyl3slcavxn6003vu.jpg",
+                description: "Богатый натюрморт с цветами и фруктами, демонстрирующий мастерство художника в передаче фактур и деталей.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "78 × 62 см",
+                    location: "Национальный художественный музей Республики Беларусь",
+                    period: "Зрелый период творчества",
+                    history: "Одна из самых известных работ Хруцкого в жанре натюрморта, характеризуется тщательной проработкой деталей."
+                }
+            },
+            {
+                id: 13,
+                title: "Новогрудский замок",
+                artist: "Наполеон Орда",
+                year: "1870-е",
+                era: "romanticism",
+                artistFilter: "orda",
+                style: "landscape",
+                image: "https://web.archive.org/web/20170113021532im_/http://negnevichi.by/sites/default/files/u10940/navogrudok.png",
+                description: "Акварельное изображение Новогрудского замка - одной из резиденций великих князей литовских.",
+                details: {
+                    technique: "Акварель, бумага",
+                    size: "28 × 40 см",
+                    location: "Национальный музей в Кракове",
+                    period: "Период путешествий",
+                    history: "Часть обширной серии работ, созданных во время путешествий художника по историческим местам."
+                }
+            },
+            {
+                id: 14,
+                title: "Танец с факелами",
+                artist: "Михаил Савицкий",
+                year: "1980",
+                era: "contemporary",
+                artistFilter: "savitsky",
+                style: "realism",
+                image: "https://minsknews.by/wp-content/uploads/2022/02/Tanecz-s-fakelami.jpg",
+                description: "Динамичная картина, изображающая традиционный белорусский танец с факелами.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "150 × 120 см",
+                    location: "Национальный художественный музей Республики Беларусь",
+                    period: "Поздний период творчества",
+                    history: "Относится к циклу работ, в которых художник обращается к темам народных традиций и праздников."
+                }
+            },
+            {
+                id: 15,
+                title: "Городской пейзаж",
+                artist: "Май Данциг",
+                year: "1985",
+                era: "contemporary",
+                artistFilter: "dantsig",
+                style: "realism",
+                image: "https://artpriced.ru/images/load/ed8/ed85a0be2567ab5d5da46f5ae1c36f48.jpg",
+                description: "Динамичное изображение городской среды, выполненное в характерной для художника манере.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "100 × 80 см",
+                    location: "Музей современного белорусского искусства",
+                    period: "Зрелый период творчества",
+                    history: "Картина отражает интерес художника к урбанистическим сюжетам и современной жизни города."
+                }
+            },
+            {
+                id: 16,
+                title: "Как во сне",
+                artist: "Леонид Щемелев",
+                year: "1995",
+                era: "contemporary",
+                artistFilter: "other",
+                style: "landscape",
+                image: "https://minsknews.by/wp-content/uploads/2023/03/wkx1xalbd19c9brsvx5tbkter7win23n.jpg",
+                description: "Пейзаж, написанный в сновидческой манере, характерной для позднего творчества Щемелева.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "80 × 100 см",
+                    location: "Частная коллекция",
+                    period: "Поздний период творчества",
+                    history: "Картина была создана в 1995 году и отражает особый стиль художника, близкий к сюрреализму."
+                }
+            },
+            {
+                id: 17,
+                title: "Портрет Адама Мицкевича",
+                artist: "Валентий Ванькович",
+                year: "1828",
+                era: "romanticism",
+                artistFilter: "other",
+                style: "portrait",
+                image: "https://arthive.com/res/media/img/oy1000/work/d25/731493.jpg",
+                description: "Портрет великого поэта Адама Мицкевича работы белорусского художника Валентия Ваньковича.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "Неизвестно",
+                    location: "Национальный музей в Варшаве",
+                    period: "Период романтизма",
+                    history: "Один из известных портретов Адама Мицкевича, созданный современником поэта."
+                }
+            },
+            {
+                id: 18,
+                title: "Натюрморт с самоваром",
+                artist: "Иван Хруцкий",
+                year: "1838",
+                era: "romanticism",
+                artistFilter: "khrutsky",
+                style: "still-life",
+                image: "https://planetabelarus.by/upload/medialibrary/330/531hjkvh09qnnr0nyl3slcavxn6003vu.jpg",
+                description: "Классический натюрморт с самоваром, демонстрирующий мастерство художника в передаче фактур.",
+                details: {
+                    technique: "Масло, холст",
+                    size: "70 × 55 см",
+                    location: "Национальный художественный музей Республики Беларусь",
+                    period: "Зрелый период творчества",
+                    history: "Одна из характерных работ Хруцкого, демонстрирующая его виртуозное владение техникой натюрморта."
+                }
+            }
+        ];
+
+        // Инициализация галереи
+        const galleryContainer = document.getElementById('galleryContainer');
+        const eraFilter = document.getElementById('era-filter');
+        const artistFilter = document.getElementById('artist-filter');
+        const styleFilter = document.getElementById('style-filter');
+        const applyFiltersBtn = document.getElementById('applyFilters');
+        const resetFiltersBtn = document.getElementById('resetFilters');
+        const paintingModal = document.getElementById('paintingModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalBody = document.getElementById('modalBody');
+
+        // Отображение карточек картин
+        function displayPaintings(paintings) {
+            galleryContainer.innerHTML = '';
+            
+            paintings.forEach(painting => {
+                const card = document.createElement('div');
+                card.className = 'painting-card';
+                card.dataset.id = painting.id;
+                card.dataset.era = painting.era;
+                card.dataset.artist = painting.artistFilter;
+                card.dataset.style = painting.style;
+                
+                card.innerHTML = `
+                    <div class="painting-image">
+                        <img src="${painting.image}" alt="${painting.title}">
+                        <div class="painting-badge">${getEraName(painting.era)}</div>
+                    </div>
+                    <div class="painting-info">
+                        <h3 class="painting-title">${painting.title}</h3>
+                        <div class="painting-artist">${painting.artist}</div>
+                        <div class="painting-year">${painting.year}</div>
+                        <p class="painting-description">${painting.description}</p>
+                        <div class="painting-details">
+                            <span class="painting-era">${getEraName(painting.era)}</span>
+                            <button class="painting-btn" data-id="${painting.id}">Подробнее</button>
+                        </div>
+                    </div>
+                `;
+                
+                galleryContainer.appendChild(card);
+            });
+            
+            // Добавляем обработчики для кнопок "Подробнее"
+            document.querySelectorAll('.painting-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const paintingId = parseInt(btn.dataset.id);
+                    openPaintingModal(paintingId);
+                });
+            });
+            
+            // Добавляем обработчики для клика по карточке
+            document.querySelectorAll('.painting-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const paintingId = parseInt(card.dataset.id);
+                    openPaintingModal(paintingId);
+                });
+            });
+        }
+
+        // Получение названия эпохи по ключу
+        function getEraName(eraKey) {
+            const eraNames = {
+                medieval: 'Средневековье',
+                renaissance: 'Ренессанс',
+                baroque: 'Барокко',
+                classicism: 'Классицизм',
+                romanticism: 'Романтизм',
+                avantgarde: 'Авангард',
+                contemporary: 'Современность'
+            };
+            return eraNames[eraKey] || 'Неизвестно';
+        }
+
+        // Получение названия стиля по ключу
+        function getStyleName(styleKey) {
+            const styleNames = {
+                icon: 'Иконопись',
+                portrait: 'Портрет',
+                landscape: 'Пейзаж',
+                'still-life': 'Натюрморт',
+                historical: 'Историческая живопись',
+                avantgarde: 'Авангард',
+                realism: 'Реализм',
+                impressionism: 'Импрессионизм',
+                modern: 'Модерн'
+            };
+            return styleNames[styleKey] || 'Неизвестно';
+        }
+
+        // Открытие модального окна с деталями картины
+        function openPaintingModal(paintingId) {
+            const painting = paintingsData.find(p => p.id === paintingId);
+            
+            if (!painting) return;
+            
+            modalBody.innerHTML = `
+                <div class="modal-header">
+                    <div class="modal-image">
+                        <img src="${painting.image}" alt="${painting.title}">
+                    </div>
+                    <div class="modal-title">
+                        <h2>${painting.title}</h2>
+                        <div class="modal-artist">${painting.artist}</div>
+                        <div class="modal-year">${painting.year} год</div>
+                        <div class="modal-badges">
+                            <span class="modal-badge">${getEraName(painting.era)}</span>
+                            <span class="modal-badge">${getStyleName(painting.style)}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-details">
+                    <div class="modal-section">
+                        <h3>Описание</h3>
+                        <p>${painting.description}</p>
+                        <p>${painting.details.history}</p>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <h3>Технические детали</h3>
+                        <ul>
+                            <li><strong>Техника:</strong> ${painting.details.technique}</li>
+                            <li><strong>Размеры:</strong> ${painting.details.size}</li>
+                            <li><strong>Местонахождение:</strong> ${painting.details.location}</li>
+                            <li><strong>Период создания:</strong> ${painting.details.period}</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="modal-section" style="grid-column: 1 / -1; margin-top: 20px;">
+                    <h3>Об авторе</h3>
+                    <p>${getArtistBio(painting.artistFilter)}</p>
+                </div>
+            `;
+            
+            paintingModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Получение биографии художника
+        function getArtistBio(artistKey) {
+            const bios = {
+                chagall: 'Марк Шагал (1887-1985) - белорусский и французский художник, один из самых известных представителей авангарда в изобразительном искусстве XX века. Родился в Витебске, работал в России, Франции и США.',
+                savitsky: 'Михаил Савицкий (1922-2010) - белорусский живописец, народный художник СССР, Герой Беларуси. Известен своими работами на военную тематику и портретами.',
+                dantsig: 'Май Данциг (1930-2017) - белорусский живописец, народный художник Беларуси. Представитель "сурового стиля" в белорусской живописи.',
+                khrutsky: 'Иван Хруцкий (1810-1885) - белорусский и русский живописец, известный своими натюрмортами и портретами. Один из наиболее значительных художников первой половины XIX века.',
+                orda: 'Наполеон Орда (1807-1883) - белорусский и польский художник, композитор, пианист. Известен своими акварельными изображениями архитектурных памятников.',
+                tsvirko: 'Виталий Цвирко (1931-1993) - белорусский живописец, известный своими пейзажами и портретами. Народный художник Беларуси.',
+                podolinsky: 'Михаил Подолинский (род. 1790) - белорусский художник XIX века, известный портретист, работавший в стиле классицизма.',
+                other: 'Информация о художнике требует дополнительного изучения. Рекомендуем обратиться к разделу "Художники" для получения подробной биографии.'
+            };
+            
+            return bios[artistKey] || bios.other;
+        }
+
+        // Закрытие модального окна
+        modalClose.addEventListener('click', () => {
+            paintingModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Закрытие модального окна при клике вне его
+        paintingModal.addEventListener('click', (e) => {
+            if (e.target === paintingModal) {
+                paintingModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Закрытие модального окна по клавише Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && paintingModal.classList.contains('active')) {
+                paintingModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Фильтрация картин
+        function filterPaintings() {
+            const selectedEra = eraFilter.value;
+            const selectedArtist = artistFilter.value;
+            const selectedStyle = styleFilter.value;
+            
+            let filteredPaintings = paintingsData;
+            
+            if (selectedEra !== 'all') {
+                filteredPaintings = filteredPaintings.filter(painting => painting.era === selectedEra);
+            }
+            
+            if (selectedArtist !== 'all') {
+                filteredPaintings = filteredPaintings.filter(painting => painting.artistFilter === selectedArtist);
+            }
+            
+            if (selectedStyle !== 'all') {
+                filteredPaintings = filteredPaintings.filter(painting => painting.style === selectedStyle);
+            }
+            
+            displayPaintings(filteredPaintings);
+            
+            // Визуальная обратная связь без уведомления
+            const filterBtn = document.getElementById('applyFilters');
+            filterBtn.textContent = '✓ Фильтры применены';
+            filterBtn.style.backgroundColor = '#4CAF50';
+            
+            setTimeout(() => {
+                filterBtn.textContent = 'Применить фильтры';
+                filterBtn.style.backgroundColor = '#767272';
+            }, 1500);
+        }
+
+        // Сброс фильтров
+        function resetFilters() {
+            eraFilter.value = 'all';
+            artistFilter.value = 'all';
+            styleFilter.value = 'all';
+            displayPaintings(paintingsData);
+            
+            // Визуальная обратная связь без уведомления
+            const resetBtn = document.getElementById('resetFilters');
+            resetBtn.textContent = '✓ Фильтры сброшены';
+            resetBtn.style.backgroundColor = '#4CAF50';
+            
+            setTimeout(() => {
+                resetBtn.textContent = 'Сбросить фильтры';
+                resetBtn.style.backgroundColor = '#ACB5BC';
+            }, 1500);
+        }
+
+        // Применение фильтров
+        applyFiltersBtn.addEventListener('click', filterPaintings);
+        resetFiltersBtn.addEventListener('click', resetFilters);
+
+        // Инициализация галереи при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            displayPaintings(paintingsData);
+            
+            // Добавляем класс active для текущей страницы в меню
+            document.querySelectorAll('.menu-content a').forEach(link => {
+                if (link.getAttribute('href') === 'paintings.html') {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Плавное появление элементов
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Анимация для элементов при загрузке
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(30px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .painting-card, .filters-section {
+                animation: fadeInUp 0.8s ease forwards;
+                opacity: 0;
+            }
+            
+            .painting-card:nth-child(1) { animation-delay: 0.05s; }
+            .painting-card:nth-child(2) { animation-delay: 0.1s; }
+            .painting-card:nth-child(3) { animation-delay: 0.15s; }
+            .painting-card:nth-child(4) { animation-delay: 0.2s; }
+            .painting-card:nth-child(5) { animation-delay: 0.25s; }
+            .painting-card:nth-child(6) { animation-delay: 0.3s; }
+            .painting-card:nth-child(7) { animation-delay: 0.35s; }
+            .painting-card:nth-child(8) { animation-delay: 0.4s; }
+            .painting-card:nth-child(9) { animation-delay: 0.45s; }
+            .painting-card:nth-child(10) { animation-delay: 0.5s; }
+            .painting-card:nth-child(11) { animation-delay: 0.55s; }
+            .painting-card:nth-child(12) { animation-delay: 0.6s; }
+            .painting-card:nth-child(13) { animation-delay: 0.65s; }
+            .painting-card:nth-child(14) { animation-delay: 0.7s; }
+            .painting-card:nth-child(15) { animation-delay: 0.75s; }
+            .painting-card:nth-child(16) { animation-delay: 0.8s; }
+            .painting-card:nth-child(17) { animation-delay: 0.85s; }
+            .painting-card:nth-child(18) { animation-delay: 0.9s; }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

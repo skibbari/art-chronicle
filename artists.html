@@ -1,0 +1,2065 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Художники - Арт-Хроника Беларуси</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Базовые настройки */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Viaoda Libre', serif;
+            line-height: 1.6;
+            color: #262E33;
+            background-color: #ACB5BC;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ШАПКА САЙТА */
+        header {
+            position: relative;
+            height: 550px;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                        url('https://admin.artmuseum.by/Files/events/klasika-i-etnamadern-viktara-markautca-zhyvapis/Share.jpg') no-repeat center center;
+            background-size: cover;
+            margin-bottom: 40px;
+        }
+
+        .nav-container {
+            position: relative;
+            z-index: 10;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .logo-circle, .menu-circle {
+            width: 65px;
+            height: 65px;
+            background-color: #FBF3DE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Viaoda Libre', serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: #262E33;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo-circle:hover, .menu-circle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .burger-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .burger-line {
+            width: 24px;
+            height: 3px;
+            background-color: #262E33;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* Меню при раскрытии */
+        .menu-content {
+            position: absolute;
+            top: 140px;
+            left: 0;
+            background-color: #FBF3DE;
+            border-radius: 12px;
+            padding: 15px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 180px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            z-index: 99;
+        }
+
+        .menu-content.active {
+            display: flex;
+        }
+
+        .menu-content a {
+            color: #262E33;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-family: 'Viaoda Libre', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-content a:hover {
+            background-color: rgba(172, 181, 188, 0.3);
+        }
+
+        .menu-content a i {
+            font-size: 14px;
+        }
+
+        .menu-content a.active {
+            background-color: #ACB5BC;
+            font-weight: bold;
+        }
+
+        /* Заголовок страницы */
+        .page-title-container {
+            position: relative;
+            z-index: 5;
+            margin-bottom: 80px;
+            padding-top: 20px;
+            margin-top: -60px;
+            text-align: center;
+        }
+
+        .page-title-box {
+            background-color: rgba(118, 114, 114, 0.95);
+            border-radius: 25px;
+            padding: 35px 70px;
+            display: inline-block;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+            margin-top: -40px;
+            text-align: center;
+            max-width: 85%;
+            border: 3px solid rgba(251, 243, 222, 0.2);
+        }
+
+        .page-title {
+            font-size: 56px;
+            font-weight: bold;
+            color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+        }
+
+        .page-subtitle {
+            font-size: 26px;
+            color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            opacity: 0.9;
+            line-height: 1.4;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Вступление */
+        .intro-section {
+            background-color: #FBF3DE;
+            border-radius: 30px;
+            padding: 50px 60px;
+            margin-bottom: 80px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+            text-align: center;
+            border: 3px solid rgba(172, 181, 188, 0.2);
+        }
+
+        .intro-text {
+            font-size: 22px;
+            color: #262E33;
+            line-height: 1.8;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Сетка художников */
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        /* Карточка художника */
+        .artist-card {
+            background-color: #FBF3DE;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(172, 181, 188, 0.2);
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 580px;
+        }
+
+        .artist-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 22px 45px rgba(0,0,0,0.25);
+        }
+
+        .artist-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background-color: #FBF3DE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .artist-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.8s ease;
+            border-radius: 8px;
+        }
+
+        .artist-card:hover .artist-image img {
+            transform: scale(1.05);
+        }
+
+        .artist-info {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .artist-name {
+            font-size: 26px;
+            color: #262E33;
+            margin-bottom: 8px;
+            font-weight: bold;
+            border-bottom: 3px solid #767272;
+            padding-bottom: 8px;
+        }
+
+        .artist-dates {
+            font-size: 18px;
+            color: #767272;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .artist-preview {
+            font-size: 16px;
+            color: #262E33;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .view-details {
+            display: inline-block;
+            background-color: #767272;
+            color: #FBF3DE;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-family: 'Viaoda Libre', serif;
+            border: 2px solid #767272;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .view-details:hover {
+            background-color: transparent;
+            color: #767272;
+        }
+
+        /* Модальное окно с биографией */
+        .bio-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            padding: 20px;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+        }
+
+        .bio-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .bio-content {
+            background-color: #FBF3DE;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            border: 3px solid #767272;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            font-size: 32px;
+            color: #262E33;
+            cursor: pointer;
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            background-color: rgba(172, 181, 188, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .bio-header {
+            padding: 40px 50px 30px;
+            background: linear-gradient(135deg, #ACB5BC 0%, #767272 100%);
+            border-radius: 30px 30px 0 0;
+            color: #FBF3DE;
+            position: relative;
+        }
+
+        .bio-name {
+            font-size: 42px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .bio-dates {
+            font-size: 24px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .bio-main {
+            padding: 40px 50px;
+        }
+
+        .bio-section {
+            margin-bottom: 35px;
+        }
+
+        .bio-section h3 {
+            font-size: 28px;
+            color: #262E33;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #767272;
+            padding-bottom: 10px;
+        }
+
+        .bio-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #262E33;
+            margin-bottom: 20px;
+        }
+
+        /* Галерея работ в модальном окне */
+        .works-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .work-item {
+            background-color: #FBF3DE;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(172, 181, 188, 0.2);
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        }
+
+        .work-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background-color: #FBF3DE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .work-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.6s ease;
+        }
+
+        .work-item:hover .work-image img {
+            transform: scale(1.05);
+        }
+
+        .work-info {
+            padding: 15px;
+        }
+
+        .work-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #262E33;
+            margin-bottom: 5px;
+        }
+
+        .work-year {
+            font-size: 14px;
+            color: #767272;
+            font-style: italic;
+        }
+
+        /* Хронология в модальном окне */
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #8B4513, #DAA520, #8A2BE2);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 25px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #767272;
+            border: 3px solid #FBF3DE;
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            color: #767272;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-text {
+            font-size: 16px;
+            color: #262E33;
+            line-height: 1.5;
+        }
+
+        /* Кнопка "Наверх" */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #767272;
+            color: #FBF3DE;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            border: 3px solid #FBF3DE;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .scroll-top-btn.visible {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-top-btn:hover {
+            background-color: #ACB5BC;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Подвал */
+        footer {
+            background-color: #767272;
+            border-radius: 25px 25px 0 0;
+            padding: 50px 0 35px;
+            margin-top: 90px;
+            border-top: 3px solid rgba(172, 181, 188, 0.3);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            gap: 50px;
+        }
+
+        .footer-left, .footer-right {
+            flex: 1;
+        }
+
+        .footer-left {
+            text-align: left;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-logo {
+            font-size: 38px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #FBF3DE;
+            text-align: center;
+            width: 100%;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .footer-text {
+            font-size: 20px;
+            margin-bottom: 14px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .footer-contact {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .footer-contact a {
+            color: #FBF3DE;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding-bottom: 2px;
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer-contact a:hover {
+            color: #ACB5BC;
+            border-bottom-color: #ACB5BC;
+        }
+
+        .copyright {
+            font-size: 18px;
+            opacity: 0.7;
+            line-height: 1.4;
+            margin-top: 18px;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1100px) {
+            .works-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .artists-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 25px;
+            }
+            
+            .nav-container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .page-title-box {
+                padding: 25px 40px;
+                margin-top: -30px;
+            }
+            
+            .page-title {
+                font-size: 40px;
+            }
+            
+            .page-subtitle {
+                font-size: 22px;
+            }
+            
+            .intro-section {
+                padding: 40px 35px;
+            }
+            
+            .intro-text {
+                font-size: 20px;
+            }
+            
+            .artists-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .bio-content {
+                width: 95%;
+                padding: 0;
+            }
+            
+            .bio-header, .bio-main {
+                padding: 30px 25px;
+            }
+            
+            .bio-name {
+                font-size: 32px;
+            }
+            
+            .works-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .scroll-top-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .footer-left, .footer-right {
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .logo-circle, .menu-circle {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+            }
+            
+            .page-title-box {
+                padding: 20px 30px;
+                margin-top: -20px;
+            }
+            
+            .page-title {
+                font-size: 34px;
+            }
+            
+            .page-subtitle {
+                font-size: 20px;
+            }
+            
+            .intro-section {
+                padding: 35px 30px;
+                border-radius: 25px;
+            }
+            
+            .bio-name {
+                font-size: 28px;
+            }
+            
+            .bio-dates {
+                font-size: 20px;
+            }
+            
+            .menu-content {
+                min-width: 160px;
+                top: 125px;
+                padding: 12px;
+            }
+            
+            .menu-content a {
+                font-size: 15px;
+                padding: 8px 16px;
+            }
+            
+            .footer-logo {
+                font-size: 32px;
+            }
+            
+            footer {
+                padding: 40px 0 25px;
+                border-radius: 20px 20px 0 0;
+                margin-top: 60px;
+            }
+            
+            .scroll-top-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo-circle">АХ</div>
+                <div class="menu-circle" id="menuBtn">
+                    <div class="burger-icon">
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                    </div>
+                </div>
+                
+                <div class="menu-content" id="menuContent">
+    <a href="index.html"><i class="fas fa-home"></i> Главная</a>
+    <a href="timeline.html"><i class="fas fa-clock"></i> Лента времени</a>
+    <a href="artists.html" class="active"><i class="fas fa-palette"></i> Художники</a>
+    <a href="artdirection.html"><i class="fas fa-directions"></i> Направления</a>
+    <a href="paintings.html"><i class="fas fa-image"></i> Картины</a>
+    <a href="events.html"><i class="fas fa-calendar-alt"></i> Мероприятия</a>
+</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Заголовок страницы -->
+        <section class="page-title-container">
+            <div class="page-title-box">
+                <h1 class="page-title">Художники Беларуси</h1>
+                <div class="page-subtitle">Кликните на любого художника, чтобы открыть полную биографию и галерею работ</div>
+            </div>
+        </section>
+
+        <!-- Вступление -->
+        <section class="intro-section">
+            <p class="intro-text">
+                Беларусь подарила миру плеяду выдающихся художников, чьи работы составляют золотой фонд национального и мирового искусства. 
+                На этой странице вы можете познакомиться с творчеством самых известных белорусских мастеров. 
+                <strong>Кликните на любого художника</strong>, чтобы открыть подробную биографию, хронологию жизни и галерею самых известных работ.
+            </p>
+        </section>
+
+        <!-- Сетка художников -->
+        <section class="artists-grid" id="artistsGrid">
+            <!-- Марк Шагал -->
+            <div class="artist-card" data-artist="shagal">
+                <div class="artist-image">
+                    <img src="https://i.pinimg.com/474x/1a/6a/75/1a6a758ff4da1cd6de430a35267774e1.jpg?nii=t" alt="Марк Шагал">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Марк Шагал</h3>
+                    <div class="artist-dates">1887-1985</div>
+                    <p class="artist-preview">
+                        Основоположник художественного авангарда XX века, самый известный белорусский художник в мире. 
+                        Создал уникальный стиль, сочетающий кубизм, фовизм и орфизм.
+                    </p>
+                    <button class="view-details">Подробная биография →</button>
+                </div>
+            </div>
+            
+            <!-- Хаим Сутин -->
+            <div class="artist-card" data-artist="soutine">
+                <div class="artist-image">
+                    <img src="https://i.pinimg.com/474x/cf/fa/35/cffa35f4f1a81fe5732998d9c8d560e6.jpg" alt="Хаим Сутин">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Хаим Сутин</h3>
+                    <div class="artist-dates">1893-1943</div>
+                    <p class="artist-preview">
+                        Экспрессионист Парижской школы, один из самых дорогих художников мира. 
+                        Его экспрессивный стиль оказал влияние на многих современных мастеров.
+                    </p>
+                    <button class="view-details">Подробная биография →</button>
+                </div>
+            </div>
+            
+            <!-- Иван Хруцкий -->
+            <div class="artist-card" data-artist="hrutsky">
+                <div class="artist-image">
+                    <img src="https://arthive.com/res/media/img/ox800/work/c5e/218222.jpg" alt="Иван Хруцкий">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Иван Хруцкий</h3>
+                    <div class="artist-dates">1810-1885</div>
+                    <p class="artist-preview">
+                        Мастер натюрморта и портрета, классик белорусской живописи XIX века. 
+                        Известен детализированными работами и мастерским владением техникой.
+                    </p>
+                    <button class="view-details">Подробная биография →</button>
+                </div>
+            </div>
+            
+            <!-- Наполеон Орда -->
+            <div class="artist-card" data-artist="orda">
+                <div class="artist-image">
+                    <img src="https://brestmemory.com/wp-content/uploads/2025/09/547295224_25054803374125568_8786975402252963074_n-768x1052.jpg" alt="Наполеон Орда">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Наполеон Орда</h3>
+                    <div class="artist-dates">1807-1883</div>
+                    <p class="artist-preview">
+                        Художник, музыкант и композитор, документалист архитектурного наследия. 
+                        Оставил более 1000 акварелей памятников Беларуси и соседних стран.
+                    </p>
+                    <button class="view-details">Подробная биография →</button>
+                </div>
+            </div>
+            
+            <!-- Витольд Бялыницкий-Бируля -->
+            <div class="artist-card" data-artist="bialynitsky">
+                <div class="artist-image">
+                    <img src="https://rah.ru/upload/iblock/d03/d037c5b3f54c9e5f0dfe8b3425d907ff.jpg" alt="Витольд Бялыницкий-Бируля">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Витольд Бялыницкий-Бируля</h3>
+                    <div class="artist-dates">1872-1957</div>
+                    <p class="artist-preview">
+                        Выдающийся белорусский пейзажист, ученик Исаака Левитана. 
+                        Создал несколько сотен лирических пейзажных полотен.
+                    </p>
+                    <button class="view-details">Подробная биография →</button>
+                </div>
+            </div>
+            
+            <!-- Лев Бакст -->
+            <div class="artist-card" data-artist="bakst">
+                <div class="artist-image">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Bakst_self.JPG/500px-Bakst_self.JPG" alt="Лев Бакст">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Лев Бакст</h3>
+                    <div class="artist-dates">1866-1924</div>
+                    <p class="artist-preview">
+                        Выдающийся театральный художник и сценограф. Прославился декорациями 
+                        к «Русским балетным сезонам» Дягилева в Париже.
+                    </p>
+                    <button class="view-details">Подробная биография →</button>
+                </div>
+            </div>
+            
+            <!-- Михаил Савицкий -->
+            <div class="artist-card" data-artist="savitsky">
+                <div class="artist-image">
+                    <img src="https://static.tildacdn.com/tild3438-6564-4465-a134-666635383338/114094.jpg" alt="Михаил Савицкий">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Михаил Савицкий</h3>
+                    <div class="artist-dates">1922-2010</div>
+                    <p class="artist-preview">
+                        Народный художник СССР и Беларуси, Герой Беларуси. 
+                        Автор знаменитого цикла "Цифры на сердце" о фашистских концлагерях.
+                    </p>
+                    <button class="view-details">Подробная биография →</button>
+                </div>
+            </div>
+
+            <!-- Василий Шарангович -->
+            <div class="artist-card" data-artist="sharangovich">
+                <div class="artist-image">
+                    <img src="https://bdam.by/wp-content/uploads/2024/07/2122a3d5f572c5ba7edff77f889dbdef.jpg" alt="Василий Шарангович">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Василий Шарангович</h3>
+                    <div class="artist-dates">1939-2024</div>
+                    <p class="artist-preview">
+                        Белорусский живописец, график и педагог, Народный художник Беларуси. 
+                        Известен тематическими картинами и работами в области графики.
+                    </p>
+                    <button class="view-details">Подробная биография →</button>
+                </div>
+            </div>
+
+            <!-- Язеп Дроздович -->
+            <div class="artist-card" data-artist="drazdovich">
+                <div class="artist-image">
+                    <img src="https://avatars.mds.yandex.net/i?id=72a507af2bc79b34731e3e09c4ef2cfb_l-5234328-images-thumbs&n=13" alt="Язеп Дроздович">
+                </div>
+                <div class="artist-info">
+                    <h3 class="artist-name">Язеп Дроздович</h3>
+                    <div class="artist-dates">1888-1954</div>
+                    <p class="artist-preview">
+                        Белорусский художник, график, скульптор и этнограф. 
+                        Известен фантастическими работами на космическую тему.
+                    </p>
+                    <button class="view-details">Подробная биография →</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Art Chronicle</div>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-text">© 2025 Art Chronicle. Все права защищены.</div>
+                    <div class="footer-text">Исследуйте богатство белорусского искусства вместе с нами!</div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-contact">
+                        <a href="mailto:art@chronicle.by">art@chronicle.by</a>
+                    </div>
+                    <div class="footer-contact">+375 (29) 239-49-94</div>
+                    <div class="copyright">Проект "Арт-Хроника" посвящен истории белорусского изобразительного искусства</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Наверх" -->
+    <div class="scroll-top-btn" id="scrollTopBtn">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Модальное окно с биографией (шаблон) -->
+    <div class="bio-modal" id="bioModal">
+        <div class="bio-content" id="bioContent">
+            <!-- Контент будет добавляться динамически -->
+        </div>
+    </div>
+
+    <!-- Данные художников (скрыты) -->
+    <div id="artistsData" style="display: none;">
+        <!-- Данные Марка Шагала -->
+        <div id="shagal-data">
+            <div class="bio-header">
+                <h2 class="bio-name">Марк Шагал</h2>
+                <div class="bio-dates">1887-1985</div>
+                <p style="font-size: 20px; opacity: 0.9;">Основоположник художественного авангарда XX века, самый известный белорусский художник в мире</p>
+            </div>
+            <div class="bio-main">
+                <div class="bio-section">
+                    <h3>Биография</h3>
+                    <p class="bio-text">
+                        Марк Захарович Шагал (урождённый Мойше Шагал) родился 7 июля 1887 года в Витебске, в семье приказчика селёдочного склада. 
+                        Он был старшим из десяти детей. В 1906 году Шагал поступил в витебскую Школу рисования и живописи Юделя Пэна, затем продолжил 
+                        обучение в Санкт-Петербурге. В 1910 году он уехал в Париж, где познакомился с авангардными течениями — кубизмом, фовизмом, орфизмом.
+                    </p>
+                    <p class="bio-text">
+                        В 1914 году Шагал вернулся в Витебск, где в 1918 году стал уполномоченным по делам искусств Витебской губернии и основал 
+                        Витебское художественное училище. Среди его учеников были будущие известные художники, а преподавали у него Казимир Малевич 
+                        и Эль Лисицкий. Однако конфликт с Малевичем вынудил Шагала покинуть Витебск в 1920 году.
+                    </p>
+                    <p class="bio-text">
+                        В 1923 году Шагал с семьёй переехал в Париж, где прожил до 1941 года. С приходом к власти нацистов он был вынужден эмигрировать 
+                        в США. После войны вернулся во Францию, где прожил до конца жизни. Шагал умер 28 марта 1985 года в Сен-Поль-де-Вансе на юге Франции.
+                    </p>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Хронология жизни</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1887</div>
+                            <div class="timeline-text">Родился в Витебске в еврейской семье</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1906</div>
+                            <div class="timeline-text">Поступил в школу рисования Юделя Пэна в Витебске</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1910</div>
+                            <div class="timeline-text">Переезд в Париж, знакомство с авангардом</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1914</div>
+                            <div class="timeline-text">Вернулся в Витебск, женился на Белле Розенфельд</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1918</div>
+                            <div class="timeline-text">Основал Витебское художественное училище</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1923</div>
+                            <div class="timeline-text">Переезд в Париж, мировая известность</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1941</div>
+                            <div class="timeline-text">Эмиграция в США из-за Второй мировой войны</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1985</div>
+                            <div class="timeline-text">Умер в Сен-Поль-де-Вансе, Франция</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Самые известные работы</h3>
+                    <div class="works-gallery">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://www.artchive.com/wp-content/uploads/2023/04/I-and-the-Village-Chagall-Marc-1911-2-1.jpg" alt="Я и деревня">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Я и деревня»</div>
+                                <div class="work-year">1911 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://www.culture.ru/_next/image?url=https%3A%2F%2Fcdn.culture.ru%2Fc%2F126056.1020x.jpg&w=1440&q=75" alt="День рождения">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«День рождения»</div>
+                                <div class="work-year">1915 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://avatars.mds.yandex.net/get-mpic/4466970/2a0000018a798a0abd69964e064785b2f142/orig" alt="Над городом">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Над городом»</div>
+                                <div class="work-year">1918 год</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Данные Хаима Сутина -->
+        <div id="soutine-data">
+            <div class="bio-header">
+                <h2 class="bio-name">Хаим Сутин</h2>
+                <div class="bio-dates">1893-1943</div>
+                <p style="font-size: 20px; opacity: 0.9;">Экспрессионист Парижской школы, один из самых дорогих художников мира</p>
+            </div>
+            <div class="bio-main">
+                <div class="bio-section">
+                    <h3>Биография</h3>
+                    <p class="bio-text">
+                        Хаим Сутин родился 13 января 1893 года в местечке Смиловичи Минской губернии (ныне Червенский район Минской области) 
+                        в бедной еврейской семье. Он был десятым из одиннадцати детей. С детства проявлял интерес к рисованию, что вызывало 
+                        недовольство ортодоксальной семьи. В 1909 году Сутин сбежал из дома в Минск, где поступил в Школу изящных искусств.
+                    </p>
+                    <p class="bio-text">
+                        В 1913 году Сутин переехал в Париж, где поселился в знаменитом «Улье» — общежитии для бедных художников. 
+                        Здесь он познакомился с Амедео Модильяни, который стал его близким другом и покровителем. Сутин жил в крайней нищете, 
+                        часто голодал, но продолжал упорно работать. Его ранние работы — мрачные, экспрессивные портреты и натюрморты.
+                    </p>
+                    <p class="bio-text">
+                        Прорыв в карьере Сутина произошёл в 1923 году, когда американский коллекционер Альберт Барнс купил сразу 60 его работ. 
+                        Это принесло художнику финансовую независимость и признание. В 1930-х годах Сутин достиг пика популярности, 
+                        но с началом Второй мировой войны как еврей вынужден был скрываться. Он умер 9 августа 1943 года в Париже от прободной язвы.
+                    </p>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Хронология жизни</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1893</div>
+                            <div class="timeline-text">Родился в Смиловичах Минской губернии</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1909</div>
+                            <div class="timeline-text">Сбежал из дома, поступил в Минскую школу искусств</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1913</div>
+                            <div class="timeline-text">Переезд в Париж, жизнь в «Улье»</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1923</div>
+                            <div class="timeline-text">Альберт Барнс покупает 60 работ, финансовый успех</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1937</div>
+                            <div class="timeline-text">Участие во Всемирной выставке в Париже</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1940</div>
+                            <div class="timeline-text">Вынужден скрываться от нацистов во Франции</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1943</div>
+                            <div class="timeline-text">Умер в Париже от прободной язвы</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Самые известные работы</h3>
+                    <div class="works-gallery">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://arthive.com/res/media/img/ox800/work/f67/418507.jpg" alt="Бычья туша">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Бычья туша»</div>
+                                <div class="work-year">1925 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://cdn.gallerix.asia/sr/S/1346458523/31.jpg" alt="Пейзаж кань">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Пейзаж кань»</div>
+                                <div class="work-year">1924 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://avatars.mds.yandex.net/i?id=d8684dc23c473f5fd044fe0abc721738_l-5249406-images-thumbs&n=13" alt="Женщина в красном">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Женщина в красном»</div>
+                                <div class="work-year">1922 год</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Данные Ивана Хруцкого -->
+        <div id="hrutsky-data">
+            <div class="bio-header">
+                <h2 class="bio-name">Иван Хруцкий</h2>
+                <div class="bio-dates">1810-1885</div>
+                <p style="font-size: 20px; opacity: 0.9;">Мастер натюрморта и портрета, классик белорусской живописи XIX века</p>
+            </div>
+            <div class="bio-main">
+                <div class="bio-section">
+                    <h3>Биография</h3>
+                    <p class="bio-text">
+                        Иван Фомич Хруцкий родился 8 февраля 1810 года в имении Ула Лепельского уезда Витебской губернии (ныне Бешенковичский район Витебской области) 
+                        в семье униатского священника. Получил домашнее образование, затем учился в Полоцком высшем пиарском училище. 
+                        В 1827 году переехал в Санкт-Петербург, где поступил в Императорскую Академию художеств.
+                    </p>
+                    <p class="bio-text">
+                        В Академии Хруцкий учился у таких мастеров, как А. Г. Варнек, М. Н. Воробьёв, К. П. Брюллов и Ф. А. Бруни. 
+                        В 1836 году он получил звание свободного художника «во внимание к хорошим сведениям в ландшафтной живописи». 
+                        Однако настоящую известность Хруцкому принесли не пейзажи, а натюрморты и портреты.
+                    </p>
+                    <p class="bio-text">
+                        В 1840-х годах Хруцкий вернулся в родные края, где занимался хозяйством в имении Захарничи, полученном в приданое за женой. 
+                        Здесь он создал множество портретов родственников, соседей, духовных лиц. В последние годы жизни почти ослеп, 
+                        но продолжал заниматься живописью. Умер 25 января 1885 года в своём имении.
+                    </p>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Хронология жизни</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1810</div>
+                            <div class="timeline-text">Родился в имении Ула Витебской губернии</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1827</div>
+                            <div class="timeline-text">Переезд в Санкт-Петербург, поступление в Академию художеств</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1836</div>
+                            <div class="timeline-text">Получил звание свободного художника</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1838</div>
+                            <div class="timeline-text">Создал знаменитый «Натюрморт со свечой»</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1844</div>
+                            <div class="timeline-text">Вернулся в Беларусь, поселился в имении Захарничи</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1885</div>
+                            <div class="timeline-text">Умер в своём имении, похоронен рядом с женой</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Самые известные работы</h3>
+                    <div class="works-gallery">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://radiovera.ru/wp-content/uploads/2021/12/Ivan-Hruckij.-Natjurmort-so-svechoj.jpg" alt="Натюрморт со свечой">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Натюрморт со свечой»</div>
+                                <div class="work-year">1838 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/%D0%98._%D0%A5%D1%80%D1%83%D1%86%D0%BA%D0%B8%D0%B9._%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82_%D0%BD%D0%B5%D0%B8%D0%B7%D0%B2%D0%B5%D1%81%D1%82%D0%BD%D0%BE%D0%B9_%D1%81_%D1%86%D0%B2%D0%B5%D1%82%D0%B0%D0%BC%D0%B8_%D0%B8_%D1%84%D1%80%D1%83%D0%BA%D1%82%D0%B0%D0%BC%D0%B8._1838.jpg/1200px-%D0%98._%D0%A5%D1%80%D1%83%D1%86%D0%BA%D0%B8%D0%B9._%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82_%D0%BD%D0%B5%D0%B8%D0%B7%D0%B2%D0%B5%D1%81%D1%82%D0%BD%D0%BE%D0%B9_%D1%81_%D1%86%D0%B2%D0%B5%D1%82%D0%B0%D0%BC%D0%B8_%D0%B8_%D1%84%D1%80%D1%83%D0%BA%D1%82%D0%B0%D0%BC%D0%B8._1838.jpg" alt="Портрет неизвестной">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Портрет неизвестной»</div>
+                                <div class="work-year">1840-е годы</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://artchive.ru/res/media/img/oy1000/work/dcb/454666.jpg" alt="Девочка с фруктами">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Девочка с фруктами»</div>
+                                <div class="work-year">1830-е годы</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Данные Наполеона Орды -->
+        <div id="orda-data">
+            <div class="bio-header">
+                <h2 class="bio-name">Наполеон Орда</h2>
+                <div class="bio-dates">1807-1883</div>
+                <p style="font-size: 20px; opacity: 0.9;">Художник, музыкант и композитор, документалист архитектурного наследия</p>
+            </div>
+            <div class="bio-main">
+                <div class="bio-section">
+                    <h3>Биография</h3>
+                    <p class="bio-text">
+                        Наполеон Матэуш Тадеуш Орда родился 11 февраля 1807 года в деревне Вороцевичи Пинского уезда Минской губернии 
+                        (ныне Ивановский район Брестской области) в шляхетской семье герба «Орда». Получил домашнее образование, затем учился 
+                        в Виленском университете на физико-математическом факультете. Участвовал в ноябрьском восстании 1830-1831 годов, 
+                        после подавления которого эмигрировал.
+                    </p>
+                    <p class="bio-text">
+                        В эмиграции Орда жил в Австрии, Швейцарии, Италии, а с 1833 года — в Париже. Здесь он учился музыке у Фридерика Шопена 
+                        и стал известным пианистом и композитором. Однако всемирную известность Орде принесли не музыкальные произведения, 
+                        а художественные работы. С 1840-х годов он начал создавать серию рисунков и акварелей, запечатлевших архитектурные памятники.
+                    </p>
+                    <p class="bio-text">
+                        В 1872-1874 годах Орда предпринял большое путешествие по землям бывшей Речи Посполитой, создав более 1000 рисунков и акварелей 
+                        с видами замков, дворцов, костёлов, церквей. Эти работы стали бесценным источником для реставраторов и историков архитектуры. 
+                        Умер 26 апреля 1883 года в Варшаве, похоронен на местном кладбище.
+                    </p>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Хронология жизни</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1807</div>
+                            <div class="timeline-text">Родился в деревне Вороцевичи Минской губернии</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1830</div>
+                            <div class="timeline-text">Участие в ноябрьском восстании</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1833</div>
+                            <div class="timeline-text">Переезд в Париж, учёба у Шопена</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1840</div>
+                            <div class="timeline-text">Начал создавать архитектурные зарисовки</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1872-1874</div>
+                            <div class="timeline-text">Большое путешествие по бывшей Речи Посполитой</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1883</div>
+                            <div class="timeline-text">Умер в Варшаве, оставив более 1000 работ</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Самые известные работы</h3>
+                    <div class="works-gallery">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://media.informpskov.ru/content/2022/10/tUA3A1665576811.jpg" alt="Несвижский замок">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Несвижский замок»</div>
+                                <div class="work-year">1876 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://belarusmini.by/upload/medialibrary/aa7/aa7e425cf39b042a2537ad19550359ea.jpg" alt="Мирский замок">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Мирский замок»</div>
+                                <div class="work-year">1876 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Orda_Napoleon_Czarny_Ostrow.jpg" alt="Виленский университет">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Виленский университет»</div>
+                                <div class="work-year">1875 год</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Данные Витольда Бялыницкого-Бирули -->
+        <div id="bialynitsky-data">
+            <div class="bio-header">
+                <h2 class="bio-name">Витольд Бялыницкий-Бируля</h2>
+                <div class="bio-dates">1872-1957</div>
+                <p style="font-size: 20px; opacity: 0.9;">Выдающийся белорусский пейзажист, ученик Исаака Левитана</p>
+            </div>
+            <div class="bio-main">
+                <div class="bio-section">
+                    <h3>Биография</h3>
+                    <p class="bio-text">
+                        Витольд Каэтанович Бялыницкий-Бируля родился 12 февраля 1872 года в деревне Крынки Бельского уезда Гродненской губернии 
+                        (ныне Беларусь) в семье мелкого арендатора. В 1889 году поступил в Киевскую рисовальную школу, где учился у Николая Мурашко. 
+                        В 1892 году переехал в Москву и поступил в Московское училище живописи, ваяния и зодчества, где его учителями были 
+                        С. А. Коровин, В. Д. Поленов и И. М. Прянишников.
+                    </p>
+                    <p class="bio-text">
+                        Особое влияние на творчество Бялыницкого-Бирули оказал Исаак Левитан, с которым он познакомился в 1890-х годах. 
+                        Под влиянием Левитана Бялыницкий-Бируля стал мастером лирического пейзажа. Его работы отличаются тонкой передачей 
+                        настроения, любовью к родной природе, тщательной проработкой деталей. Художник много путешествовал по России, 
+                        но всегда возвращался к белорусским мотивам.
+                    </p>
+                    <p class="bio-text">
+                        В 1908 году Бялыницкий-Бируля получил звание академика живописи. После революции 1917 года он остался в СССР, 
+                        продолжал активно работать, участвовал в выставках. В 1947 году ему было присвоено звание народного художника БССР. 
+                        Умер 18 июня 1957 года в Москве, похоронен на Новодевичьем кладбище.
+                    </p>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Хронология жизни</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1872</div>
+                            <div class="timeline-text">Родился в деревне Крынки Гродненской губернии</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1889</div>
+                            <div class="timeline-text">Поступил в Киевскую рисовальную школу</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1892</div>
+                            <div class="timeline-text">Переезд в Москву, поступление в Московское училище</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1908</div>
+                            <div class="timeline-text">Получил звание академика живописи</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1917</div>
+                            <div class="timeline-text">Остался в СССР после революции</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1947</div>
+                            <div class="timeline-text">Звание народного художника БССР</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1957</div>
+                            <div class="timeline-text">Умер в Москве</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Самые известные работы</h3>
+                    <div class="works-gallery">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://i.pinimg.com/736x/10/61/44/10614405d400c1f926ed5d1bd0e0ad69.jpg" alt="Весна">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Весна»</div>
+                                <div class="work-year">1912 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://i.pinimg.com/originals/d1/24/d0/d124d00b75a41afd6eca989252f56df8.jpg" alt="Осень">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Осень»</div>
+                                <div class="work-year">1910 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://i.pinimg.com/736x/cc/ac/f9/ccacf92ff7f5b3e010e7ee59d77f0dfd.jpg" alt="Зима">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Зима»</div>
+                                <div class="work-year">1909 год</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Данные Льва Бакста -->
+        <div id="bakst-data">
+            <div class="bio-header">
+                <h2 class="bio-name">Лев Бакст</h2>
+                <div class="bio-dates">1866-1924</div>
+                <p style="font-size: 20px; opacity: 0.9;">Выдающийся театральный художник, сценограф, иллюстратор</p>
+            </div>
+            <div class="bio-main">
+                <div class="bio-section">
+                    <h3>Биография</h3>
+                    <p class="bio-text">
+                        Лев Самойлович Бакст (настоящее имя — Лейб-Хаим Израилевич Розенберг) родился 8 февраля 1866 года в Гродно 
+                        в еврейской семье. В 1883 году он поступил вольнослушателем в Академию художеств в Санкт-Петербурге, но был 
+                        исключён в 1887 году за чрезмерную «экспрессивность» работ. Продолжил обучение в частной студии французского 
+                        художника Жана-Леона Жерома в Париже.
+                    </p>
+                    <p class="bio-text">
+                        Бакст был одним из основателей художественного объединения «Мир искусства» (1898) и одноимённого журнала. 
+                        Он прославился как театральный художник, особенно сотрудничеством с «Русскими балетными сезонами» Сергея Дягилева 
+                        в Париже. Его декорации и костюмы к балетам «Шехеразада», «Жар-птица», «Послеполуденный отдых фавна» произвели 
+                        революцию в театральном дизайне.
+                    </p>
+                    <p class="bio-text">
+                        В 1914 году Бакст был избран членом Академии художеств, но из-за Первой мировой войны и революции остался в Европе. 
+                        Он продолжал работать для театра, создавал костюмы и декорации для балетов в Париже, Лондоне, Риме. Умер 27 декабря 1924 года 
+                        в Париже от отёка лёгких, похоронен на кладбище Батиньоль.
+                    </p>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Хронология жизни</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1866</div>
+                            <div class="timeline-text">Родился в Гродно</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1883</div>
+                            <div class="timeline-text">Поступил в Академию художеств в Петербурге</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1898</div>
+                            <div class="timeline-text">Сооснователь объединения «Мир искусства»</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1909</div>
+                            <div class="timeline-text">Начало работы с «Русскими балетными сезонами»</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1910</div>
+                            <div class="timeline-text">Триумф балета «Шехеразада» в Париже</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1914</div>
+                            <div class="timeline-text">Избран членом Академии художеств</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1924</div>
+                            <div class="timeline-text">Умер в Париже</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Самые известные работы</h3>
+                    <div class="works-gallery">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://arthive.com/res/media/img/ox800/work/76b/581478.jpg" alt="Костюм для Вацлава Нижинского">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">Костюм для «Послеполуденного отдыха фавна»</div>
+                                <div class="work-year">1912 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://artchive.ru/res/media/img/ox800/work/66e/607622.jpg" alt="Эскиз декорации к Шехеразаде">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">Эскиз декорации к «Шехеразаде»</div>
+                                <div class="work-year">1910 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://avatars.mds.yandex.net/i?id=16cdb3de59b3753f6873115379ce37e5_l-5229803-images-thumbs&n=13" alt="Портрет Сергея Дягилева">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">Портрет Сергея Дягилева</div>
+                                <div class="work-year">1906 год</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Данные Михаила Савицкого -->
+        <div id="savitsky-data">
+            <div class="bio-header">
+                <h2 class="bio-name">Михаил Савицкий</h2>
+                <div class="bio-dates">1922-2010</div>
+                <p style="font-size: 20px; opacity: 0.9;">Народный художник СССР и Беларуси, Герой Беларуси</p>
+            </div>
+            <div class="bio-main">
+                <div class="bio-section">
+                    <h3>Биография</h3>
+                    <p class="bio-text">
+                        Михаил Андреевич Савицкий родился 18 февраля 1922 года в деревне Звенячи Толочинского района Витебской области. 
+                        В 1940 году был призван в Красную Армию, участвовал в Великой Отечественной войне, попал в плен и прошёл через 
+                        несколько концлагерей, включая Дахау и Бухенвальд. После войны учился в Минском художественном училище, затем 
+                        в Московском художественном институте имени В. И. Сурикова.
+                    </p>
+                    <p class="bio-text">
+                        Творчество Савицкого в значительной степени посвящено военной теме. Самый известный цикл его работ — 
+                        "Цифры на сердце" (1974-1979), состоящий из 16 картин о фашистских концлагерях. Эта серия принесла художнику 
+                        мировую известность и Государственную премию СССР (1973). В 1980-х годах Савицкий создал цикл "Чернобыльская мадонна".
+                    </p>
+                    <p class="bio-text">
+                        Михаил Савицкий был удостоен звания Героя Беларуси (2006), Народного художника СССР (1978) и Беларуси (1972). 
+                        Он также являлся лауреатом Государственной премии СССР (1973) и Государственной премии Беларуси (1996). 
+                        Умер 8 ноября 2010 года в Минске, похоронен на Восточном кладбище.
+                    </p>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Хронология жизни</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1922</div>
+                            <div class="timeline-text">Родился в деревне Звенячи Витебской области</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1940</div>
+                            <div class="timeline-text">Призван в Красную Армию</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1942-1945</div>
+                            <div class="timeline-text">Находился в фашистских концлагерях</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1957</div>
+                            <div class="timeline-text">Окончил Московский художественный институт</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1973</div>
+                            <div class="timeline-text">Получил Государственную премию СССР</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1974-1979</div>
+                            <div class="timeline-text">Создал цикл "Цифры на сердце"</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2006</div>
+                            <div class="timeline-text">Удостоен звания Героя Беларуси</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2010</div>
+                            <div class="timeline-text">Умер в Минске</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Самые известные работы</h3>
+                    <div class="works-gallery">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://admin.artmuseum.by/Files/events/mikhail-savitcki-da-100-goddzia-z-dnia-naradzhennia/Share.jpg" alt="Партизанская мадонна">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Партизанская мадонна»</div>
+                                <div class="work-year">1967 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://gorodvitebsk.by/data/data/news_26130/file.jpg-1_1.%5B2%5D.jpg" alt="Цифры на сердце">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Цифры на сердце»</div>
+                                <div class="work-year">1974 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://arthive.com/res/media/img/orig/work/c32/582285.jpg" alt="Чернобыльская мадонна">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Чернобыльская мадонна»</div>
+                                <div class="work-year">1988 год</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Данные Василия Шаранговича -->
+        <div id="sharangovich-data">
+            <div class="bio-header">
+                <h2 class="bio-name">Василий Шарангович</h2>
+                <div class="bio-dates">1939-2024</div>
+                <p style="font-size: 20px; opacity: 0.9;">Белорусский живописец, график и педагог, Народный художник Беларуси</p>
+            </div>
+            <div class="bio-main">
+                <div class="bio-section">
+                    <h3>Биография</h3>
+                    <p class="bio-text">
+                        Василий Петрович Шарангович родился 18 ноября 1939 года в деревне Хомичи Волковысского района Гродненской области.
+                        Окончил Минское художественное училище (1960), затем Белорусский государственный театрально-художественный институт (1966).
+                        Являлся одним из ведущих мастеров белорусской графики второй половины XX века.
+                    </p>
+                    <p class="bio-text">
+                        В своем творчестве Шарангович обращался к исторической и военной тематике, создавал глубокие психологические портреты
+                        и лирические пейзажи. Он мастерски владел различными графическими техниками: офортом, линогравюрой, акварелью.
+                        Его работы отличаются выразительностью, драматизмом и тонким чувством формы.
+                    </p>
+                    <p class="bio-text">
+                        За свою карьеру художник создал множество серий графических работ, участвовал в республиканских и международных выставках.
+                        В 1999 году ему было присвоено звание Народного художника Беларуси. Василий Шарангович скончался 5 февраля 2024 года.
+                    </p>
+                </div>
+                <div class="bio-section">
+                    <h3>Хронология жизни</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1939</div>
+                            <div class="timeline-text">Родился в д. Хомичи Гродненской области</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1966</div>
+                            <div class="timeline-text">Окончил Белорусский государственный театрально-художественный институт</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1970-е</div>
+                            <div class="timeline-text">Создание известных графических серий, активная выставочная деятельность</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1999</div>
+                            <div class="timeline-text">Присвоено звание Народного художника Беларуси</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024</div>
+                            <div class="timeline-text">Скончался 5 февраля</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bio-section">
+                    <h3>Примеры работ</h3>
+                    <div class="works-gallery">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://storage01.sb.by/iblock/b0b/b0b0b55e7aff6fcf03fa7d2c1699235d/b8ab0fbdf3bce86cd0d6b7c13e8b6b53.jpg" alt="Пан Тадеуш">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Пан Тадеуш»</div>
+                                <div class="work-year">-</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://storage01.sb.by/iblock/efd/efdeca48b630e4ec6b0cdc42d61808ba/a773abb762aeae8ac58cff09737da016.jpg" alt="Портрет Якуба Коласа">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Портрет Якуба Коласа»</div>
+                                <div class="work-year">1967</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://storage01.sb.by/iblock/c11/c115f68c63a3c80ff6df290cc96e834a/81c4b1063763dd3a2bdf29169045d129.jpg" alt="Мишень">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Мишень»</div>
+                                <div class="work-year">1984</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Данные Язепа Дроздовича -->
+        <div id="drazdovich-data">
+            <div class="bio-header">
+                <h2 class="bio-name">Язеп Дроздович</h2>
+                <div class="bio-dates">1888-1954</div>
+                <p style="font-size: 20px; opacity: 0.9;">Художник, график, скульптор, этнограф и фольклорист</p>
+            </div>
+            <div class="bio-main">
+                <div class="bio-section">
+                    <h3>Биография</h3>
+                    <p class="bio-text">
+                        Язеп (Иосиф) Нарцизович Дроздович родился 13 октября 1888 года в деревне Пуньки Дисненского уезда 
+                        Виленской губернии (ныне Глубокский район Витебской области). Учился в Виленской рисовальной школе 
+                        Ивана Трутнева (1906-1910), затем в частной студии В. Грязнова в Санкт-Петербурге (1910-1914).
+                    </p>
+                    <p class="bio-text">
+                        Дроздович был разносторонним художником: работал в живописи, графике, скульптуре, занимался 
+                        книжной иллюстрацией, создавал театральные декорации. Особое место в его творчестве занимают 
+                        работы на космическую тему — циклы "Жизнь на Марсе", "Жизнь на Сатурне", "Жизнь на Луне", 
+                        созданные в 1930-х годах. Эти фантастические работы опередили своё время.
+                    </p>
+                    <p class="bio-text">
+                        Параллельно с художественной деятельностью Дроздович занимался этнографией и фольклористикой. 
+                        Он путешествовал по белорусским деревням, собирал фольклор, зарисовывал памятники старины, 
+                        народные костюмы, обряды. В 1930-х годах издал несколько альбомов с зарисовками белорусской старины. 
+                        Умер 15 сентября 1954 года в деревне Подсвилье Глубокского района.
+                    </p>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Хронология жизни</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">1888</div>
+                            <div class="timeline-text">Родился в деревне Пуньки Виленской губернии</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1906-1910</div>
+                            <div class="timeline-text">Учёба в Виленской рисовальной школе</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1910-1914</div>
+                            <div class="timeline-text">Обучение в Петербурге</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1920-е</div>
+                            <div class="timeline-text">Работа театральным художником в Вильнюсе</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1930-е</div>
+                            <div class="timeline-text">Создание космических циклов картин</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1940-е</div>
+                            <div class="timeline-text">Этнографические экспедиции по Беларуси</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">1954</div>
+                            <div class="timeline-text">Умер в деревне Подсвилье</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bio-section">
+                    <h3>Самые известные работы</h3>
+                    <div class="works-gallery">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://i.pinimg.com/736x/fd/16/db/fd16db77bd3871d35bf1dfae31ca5f6f.jpg" alt="Встреча весны на Сатурне">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Встреча весны на Сатурне»</div>
+                                <div class="work-year">1932 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://drazdovich.by/static/imgs/3/07.jpg" alt="Пейзажи">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Пейзажи»</div>
+                                <div class="work-year">1926 год</div>
+                            </div>
+                        </div>
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="https://avatars.mds.yandex.net/i?id=63b2f6c9d4d4ecf6d232a33b06f4dc58_l-5229055-images-thumbs&n=13" alt="Вечный странник">
+                            </div>
+                            <div class="work-info">
+                                <div class="work-title">«Вечный странник»</div>
+                                <div class="work-year">1930-е годы</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Меню бургер
+        const menuBtn = document.getElementById('menuBtn');
+        const menuContent = document.getElementById('menuContent');
+        
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuContent.classList.toggle('active');
+            
+            const burgerLines = menuBtn.querySelectorAll('.burger-line');
+            if (menuContent.classList.contains('active')) {
+                burgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                burgerLines[1].style.opacity = '0';
+                burgerLines[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                burgerLines[0].style.transform = 'none';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'none';
+            }
+        });
+
+        // Закрыть меню при клике вне его
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.menu-circle') && !event.target.closest('.menu-content') && menuContent.classList.contains('active')) {
+                menuContent.classList.remove('active');
+                const burgerLines = menuBtn.querySelectorAll('.burger-line');
+                burgerLines[0].style.transform = 'none';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'none';
+            }
+        });
+
+        // Модальное окно с биографией
+        const bioModal = document.getElementById('bioModal');
+        const bioContent = document.getElementById('bioContent');
+        const artistsData = document.getElementById('artistsData');
+        
+        // Открытие модального окна при клике на карточку художника
+        document.querySelectorAll('.artist-card, .view-details').forEach(element => {
+            element.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const artistCard = this.closest('.artist-card');
+                if (!artistCard) return;
+                
+                const artistId = artistCard.getAttribute('data-artist');
+                const artistData = document.getElementById(`${artistId}-data`);
+                
+                if (artistData) {
+                    // Копируем содержимое данных художника в модальное окно
+                    bioContent.innerHTML = artistData.innerHTML;
+                    
+                    // Добавляем кнопку закрытия
+                    const closeButton = document.createElement('button');
+                    closeButton.className = 'close-modal';
+                    closeButton.innerHTML = '&times;';
+                    closeButton.addEventListener('click', closeBioModal);
+                    bioContent.querySelector('.bio-header').appendChild(closeButton);
+                    
+                    // Открываем модальное окно
+                    bioModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Добавляем возможность закрытия по клику вне контента
+                    bioModal.addEventListener('click', function(e) {
+                        if (e.target === bioModal) {
+                            closeBioModal();
+                        }
+                    });
+                    
+                    // Добавляем возможность закрытия по Escape
+                    document.addEventListener('keydown', function closeOnEscape(e) {
+                        if (e.key === 'Escape') {
+                            closeBioModal();
+                            document.removeEventListener('keydown', closeOnEscape);
+                        }
+                    });
+                }
+            });
+        });
+        
+        // Функция закрытия модального окна
+        function closeBioModal() {
+            bioModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Кнопка "Наверх"
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Эффект при клике на карточку художника
+        document.querySelectorAll('.artist-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (!e.target.closest('.close-modal')) {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                }
+            });
+        });
+        
+        // Плавное появление элементов при загрузке
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+            
+            // Анимация появления карточек
+            document.querySelectorAll('.artist-card').forEach((card, index) => {
+                card.style.animation = `fadeInUp 0.8s ease ${index * 0.1}s forwards`;
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+            });
+        });
+        
+        // Добавляем анимацию fadeInUp
+        const animationStyle = document.createElement('style');
+        animationStyle.textContent = `
+            @keyframes fadeInUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(animationStyle);
+        
+        // Добавляем класс active для текущей страницы в меню
+        document.querySelectorAll('.menu-content a').forEach(link => {
+            if (link.getAttribute('href') === 'artists.html') {
+                link.classList.add('active');
+            }
+        });
+        
+        // Добавляем увеличение изображений в галерее при клике
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.work-image img')) {
+                const img = e.target.closest('.work-image img');
+                const modal = document.createElement('div');
+                modal.style.position = 'fixed';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.width = '100%';
+                modal.style.height = '100%';
+                modal.style.backgroundColor = 'rgba(0,0,0,0.95)';
+                modal.style.display = 'flex';
+                modal.style.justifyContent = 'center';
+                modal.style.alignItems = 'center';
+                modal.style.zIndex = '20000';
+                modal.style.cursor = 'zoom-out';
+                
+                const modalImg = document.createElement('img');
+                modalImg.src = img.src;
+                modalImg.style.maxWidth = '90%';
+                modalImg.style.maxHeight = '90%';
+                modalImg.style.objectFit = 'contain';
+                modalImg.style.borderRadius = '10px';
+                modalImg.style.boxShadow = '0 20px 60px rgba(0,0,0,0.5)';
+                
+                modal.appendChild(modalImg);
+                document.body.appendChild(modal);
+                
+                modal.addEventListener('click', function() {
+                    document.body.removeChild(modal);
+                });
+                
+                // Закрытие по Escape
+                document.addEventListener('keydown', function closeImageModal(e) {
+                    if (e.key === 'Escape') {
+                        document.body.removeChild(modal);
+                        document.removeEventListener('keydown', closeImageModal);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

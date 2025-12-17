@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Арт-Хроника - История белорусского изобразительного искусства</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Viaoda+Libre&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Базовые настройки */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Viaoda Libre', serif;
+            line-height: 1.6;
+            color: #262E33;
+            background-color: #ACB5BC;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ШАПКА САЙТА */
+        header {
+            position: relative;
+            height: 550px;
+            overflow: hidden;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                        url('https://images.aif.by/008/085/e521fa1dbfe24fc47c1ca84ab5b6320d.png') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            margin-bottom: 40px;
+        }
+
+        /* Логотип и меню бургер */
+        .nav-container {
+            position: relative;
+            z-index: 10;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .logo-circle, .menu-circle {
+            width: 65px;
+            height: 65px;
+            background-color: #FBF3DE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Viaoda Libre', serif;
+            font-size: 28px;
+            font-weight: bold;
+            color: #262E33;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+
+        .burger-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .burger-line {
+            width: 24px;
+            height: 3px;
+            background-color: #262E33;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* Меню при раскрытии */
+        .menu-content {
+            position: absolute;
+            top: 140px;
+            left: 0;
+            background-color: #FBF3DE;
+            border-radius: 12px;
+            padding: 15px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 180px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            z-index: 99;
+        }
+
+        .menu-content.active {
+            display: flex;
+        }
+
+        .menu-content a {
+            color: #262E33;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-family: 'Viaoda Libre', serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-content a:hover {
+            background-color: rgba(172, 181, 188, 0.3);
+        }
+
+        .menu-content a.active {
+            background-color: #ACB5BC;
+            font-weight: bold;
+        }
+
+        .menu-content a i {
+            font-size: 14px;
+        }
+
+        /* Поиск и подсказки */
+        .search-container {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            z-index: 20;
+            width: 300px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px 14px 45px;
+            border: none;
+            border-radius: 30px;
+            background-color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            font-size: 16px;
+            color: #262E33;
+            outline: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #262E33;
+            font-size: 18px;
+        }
+
+        /* Подсказки поиска */
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #FBF3DE;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            margin-top: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            z-index: 100;
+        }
+
+        .search-suggestions.active {
+            display: block;
+        }
+
+        .search-suggestion-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 1px solid rgba(172, 181, 188, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-suggestion-item:hover {
+            background-color: rgba(172, 181, 188, 0.3);
+        }
+
+        .search-suggestion-item i {
+            color: #767272;
+            font-size: 14px;
+            width: 20px;
+        }
+
+        .search-suggestion-category {
+            font-size: 12px;
+            color: #767272;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* Название "Арт-Хроника" */
+        .site-title-container {
+            position: relative;
+            z-index: 5;
+            margin-bottom: 50px;
+            padding-top: 0;
+            margin-top: -50px;
+        }
+
+        .site-title-box {
+            background-color: rgba(118, 114, 114, 0.95);
+            border-radius: 20px;
+            padding: 25px 50px;
+            display: inline-block;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+            margin-top: -30px;
+        }
+
+        .site-title {
+            font-size: 48px;
+            font-weight: bold;
+            color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+            text-align: center;
+        }
+
+        /* Баннер и текст */
+        .banner-section {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 70px;
+        }
+
+        .banner-container {
+            flex: 2;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 320px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .banner-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .banner-slide.active {
+            opacity: 1;
+        }
+
+        .banner-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .banner-text {
+            flex: 1;
+            background-color: #FBF3DE;
+            border-radius: 20px;
+            padding: 35px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            gap: 20px;
+        }
+
+        .banner-text h2 {
+            font-size: 32px;
+            color: #262E33;
+            line-height: 1.3;
+            font-family: 'Viaoda Libre', serif;
+            text-align: center;
+        }
+
+        .banner-text p {
+            font-size: 22px;
+            color: #262E33;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        /* Блоки с контентом */
+        .content-block {
+            background-color: #FBF3DE;
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .content-block:nth-child(odd) {
+            min-height: 550px;
+        }
+        
+        .content-block:nth-child(even) {
+            min-height: 500px;
+        }
+
+        /* Заголовки блоков */
+        .block-title {
+            position: absolute;
+            background-color: #767272;
+            color: #FBF3DE;
+            padding: 16px 35px;
+            border-radius: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            z-index: 3;
+            font-family: 'Viaoda Libre', serif;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            top: 20px;
+            left: 50px;
+        }
+
+        /* Описания блоков */
+        .block-description {
+            background-color: #ACB5BC;
+            border-radius: 15px;
+            padding: 22px 28px;
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            z-index: 2;
+            max-width: 500px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .block-description p {
+            font-size: 18px;
+            color: #262E33;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        #timeline .block-title {
+            left: 50px;
+            right: auto;
+            top: 20px;
+        }
+        
+        #timeline .block-description {
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            right: auto;
+            width: 85%;
+            max-width: 850px;
+            text-align: center;
+            z-index: 3;
+        }
+
+        #events .block-title {
+            top: 20px;
+            left: 50px;
+        }
+        
+        #events .block-description {
+            top: 20px;
+            right: 50px;
+            background-color: #ACB5BC;
+            z-index: 2;
+            max-width: 500px;
+        }
+
+        #directions .block-title {
+            top: 20px;
+            left: 50px;
+        }
+        
+        #directions .block-description {
+            top: 20px;
+            right: 50px;
+            background-color: #ACB5BC;
+            z-index: 2;
+            max-width: 500px;
+        }
+
+        #artists .block-title,
+        #paintings .block-title {
+            top: 20px;
+            right: 50px;
+            left: auto;
+        }
+        
+        #artists .block-description,
+        #paintings .block-description {
+            top: 20px;
+            left: 50px;
+            right: auto;
+            background-color: #ACB5BC;
+            z-index: 2;
+            max-width: 500px;
+        }
+
+        /* КНОПКИ - ИСПРАВЛЕНО: НИКАКИХ ДВИЖЕНИЙ */
+        .block-btn {
+            display: block;
+            background-color: #767272;
+            color: #FBF3DE;
+            padding: 16px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 22px;
+            text-align: center;
+            transition: all 0.3s;
+            font-family: 'Viaoda Libre', serif;
+            border: 2px solid #767272;
+            width: 240px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* УБИРАЕМ ВСЕ ТРАНСФОРМАЦИИ И ДВИЖЕНИЯ */
+        .block-btn:hover {
+            background-color: #5a5656;
+            border-color: #5a5656;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+
+        .block-btn:active {
+            background-color: #262E33;
+            border-color: #262E33;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Блок лента времени */
+        .timeline-content {
+            display: flex;
+            flex-direction: column;
+            margin-top: 210px;
+        }
+
+        .timeline-images {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+            align-items: center;
+        }
+
+        .timeline-image {
+            width: 200px;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .timeline-image:hover {
+            transform: translateY(-5px);
+        }
+
+        .timeline-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Блок мероприятия */
+        .events-content {
+            margin-top: 120px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .events-image {
+            width: calc(100% - 100px);
+            margin: 0 50px;
+            height: 350px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            position: relative;
+        }
+
+        .events-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* КНОПКИ В БЛОКАХ МЕРОПРИЯТИЯ И НАПРАВЛЕНИЯ - ИСПРАВЛЕНО: НИКАКИХ ДВИЖЕНИЙ */
+        .events-btn, .directions-btn {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s !important;
+        }
+
+        /* УБИРАЕМ ВСЕ ДВИЖЕНИЯ ПРИ НАВЕДЕНИИ И НАЖАТИИ */
+        .events-btn:hover, .directions-btn:hover {
+            background-color: #5a5656;
+            border-color: #5a5656;
+            transform: translateX(-50%);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+
+        .events-btn:active, .directions-btn:active {
+            background-color: #262E33;
+            border-color: #262E33;
+            transform: translateX(-50%);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* Блок художники */
+        .artists-content {
+            display: flex;
+            flex-direction: column;
+            margin-top: 120px;
+            min-height: 500px;
+        }
+
+        .artists-images {
+            display: flex;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .artist-main-image {
+            flex: 1;
+            height: 380px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .artist-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .artist-secondary-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            height: 380px;
+            justify-content: space-between;
+        }
+
+        .artist-secondary-image {
+            height: 175px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .artist-secondary-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .artists-btn, .paintings-btn {
+            margin: 50px auto 0;
+            display: block;
+        }
+
+        /* Блок направления */
+        .directions-content {
+            margin-top: 120px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .directions-image {
+            width: calc(100% - 100px);
+            margin: 0 50px;
+            height: 370px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            position: relative;
+        }
+
+        .directions-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* БЛОК КАРТИНЫ */
+        .paintings-content {
+            display: flex;
+            flex-direction: column;
+            margin-top: 120px;
+            min-height: 500px;
+        }
+
+        .paintings-images {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .painting-main-image {
+            flex: 1.2;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+        }
+
+        .painting-main-image:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .painting-main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .painting-secondary-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            height: 400px;
+            justify-content: space-between;
+        }
+
+        .painting-secondary-image {
+            flex: 1;
+            height: calc(50% - 15px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+        }
+
+        .painting-secondary-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+        }
+
+        .painting-secondary-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: #767272;
+            border-radius: 20px 20px 0 0;
+            padding: 40px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            color: #FBF3DE;
+            font-family: 'Viaoda Libre', serif;
+        }
+
+        .footer-left {
+            flex: 1;
+            text-align: left;
+        }
+
+        .footer-right {
+            flex: 1;
+            text-align: right;
+        }
+
+        .footer-logo {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #FBF3DE;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer-text {
+            font-size: 18px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .footer-contact {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .footer-contact a {
+            color: #FBF3DE;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: #ACB5BC;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            font-size: 16px;
+            opacity: 0.7;
+            line-height: 1.4;
+        }
+
+        /* Кнопка "Наверх" */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #767272;
+            color: #FBF3DE;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            border: 3px solid #FBF3DE;
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .scroll-top-btn.visible {
+            display: flex;
+            opacity: 1;
+        }
+
+        .scroll-top-btn:hover {
+            background-color: #ACB5BC;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1100px) {
+            .artists-images,
+            .paintings-images {
+                flex-direction: column;
+            }
+            
+            .artist-main-image,
+            .painting-main-image {
+                height: 350px;
+                flex: none;
+                width: 100%;
+            }
+            
+            .artist-secondary-images,
+            .painting-secondary-images {
+                flex-direction: row;
+                height: auto;
+                gap: 20px;
+                width: 100%;
+            }
+            
+            .artist-secondary-image,
+            .painting-secondary-image {
+                height: 200px;
+                flex: 1;
+            }
+            
+            .timeline-images {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            
+            .timeline-image {
+                width: 45%;
+                height: 250px;
+            }
+            
+            .block-title {
+                font-size: 24px;
+                padding: 14px 28px;
+            }
+            
+            .artists-btn, .paintings-btn {
+                margin: 40px auto 0;
+            }
+            
+            .events-image,
+            .directions-image {
+                width: calc(100% - 60px);
+                margin: 0 30px;
+                height: 320px;
+            }
+            
+            #events .block-description,
+            #directions .block-description {
+                right: 30px;
+                top: 20px;
+                max-width: 45%;
+            }
+            
+            .block-title {
+                left: 30px;
+                top: 20px;
+            }
+            
+            .block-description {
+                right: 30px;
+                top: 20px;
+            }
+            
+            #timeline .block-description {
+                top: 110px;
+                width: 90%;
+            }
+            
+            .timeline-content {
+                margin-top: 180px;
+            }
+            
+            #artists .block-title,
+            #paintings .block-title {
+                right: 30px;
+                top: 20px;
+            }
+            
+            #artists .block-description,
+            #paintings .block-description {
+                left: 30px;
+                top: 20px;
+                max-width: 45%;
+            }
+            
+            /* Адаптивность для кнопок с увеличенным шрифтом */
+            .block-btn {
+                font-size: 20px;
+                width: 220px;
+                padding: 14px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                align-items: center;
+            }
+            
+            .search-container {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-top: 15px;
+                width: 100%;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+            
+            .site-title {
+                font-size: 36px;
+            }
+            
+            .site-title-box {
+                padding: 20px 30px;
+                margin-top: -20px;
+            }
+            
+            .site-title-container {
+                margin-top: -30px;
+                margin-bottom: 40px;
+            }
+            
+            .banner-section {
+                flex-direction: column;
+                margin-bottom: 50px;
+            }
+            
+            .banner-container {
+                height: 250px;
+            }
+            
+            .banner-text {
+                padding: 30px 25px;
+                gap: 15px;
+            }
+            
+            .banner-text h2 {
+                font-size: 26px;
+            }
+            
+            .banner-text p {
+                font-size: 18px;
+            }
+            
+            .timeline-images {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .timeline-image {
+                width: 100%;
+                max-width: 400px;
+                height: 200px;
+            }
+            
+            .block-title {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 25px;
+                display: inline-block;
+            }
+            
+            .block-description {
+                position: relative;
+                right: 0;
+                top: 0;
+                max-width: 100%;
+                margin-bottom: 30px;
+            }
+            
+            #timeline .block-description {
+                position: relative;
+                left: 0;
+                transform: none;
+                width: 100%;
+                margin: 20px 0 30px;
+                top: 0;
+            }
+            
+            .timeline-content {
+                margin-top: 40px;
+            }
+            
+            .events-content,
+            .artists-content,
+            .directions-content,
+            .paintings-content {
+                margin-top: 30px;
+            }
+            
+            .artist-main-image,
+            .painting-main-image {
+                height: 300px;
+            }
+            
+            .artist-secondary-images,
+            .painting-secondary-images {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .artist-secondary-image,
+            .painting-secondary-image {
+                height: 200px;
+                width: 100%;
+            }
+            
+            .directions-image,
+            .events-image {
+                height: 230px;
+                width: calc(100% - 40px);
+                margin: 0 20px;
+            }
+            
+            #events .block-description,
+            #directions .block-description {
+                position: relative;
+                right: 0;
+                top: 0;
+                margin-bottom: 20px;
+                max-width: 100%;
+                background-color: #ACB5BC;
+            }
+            
+            #artists .block-title,
+            #paintings .block-title {
+                position: relative;
+                right: 0;
+                top: 0;
+                margin-bottom: 25px;
+                display: inline-block;
+            }
+            
+            #artists .block-description,
+            #paintings .block-description {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+                max-width: 100%;
+                background-color: #ACB5BC;
+            }
+            
+            .content-block {
+                padding: 30px 25px;
+                margin-bottom: 50px;
+            }
+            
+            .artists-btn, .paintings-btn {
+                margin: 40px auto 0;
+            }
+            
+            /* Для мобильных: кнопки "Подробнее" в блоках мероприятий и направлений */
+            .events-btn, .directions-btn {
+                position: relative;
+                left: auto;
+                bottom: auto;
+                transform: none !important;
+                margin: 30px auto 0;
+                display: block;
+                width: 220px;
+            }
+            
+            .events-btn:hover, .directions-btn:hover {
+                transform: none !important;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-left, .footer-right {
+                text-align: center;
+                width: 100%;
+                margin-bottom: 25px;
+            }
+            
+            .footer-right {
+                margin-bottom: 0;
+            }
+            
+            .footer-logo {
+                font-size: 30px;
+                margin-bottom: 15px;
+            }
+            
+            .footer-text, .footer-contact {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+            
+            footer {
+                margin-top: 50px;
+                padding: 30px 0 20px;
+            }
+            
+            .scroll-top-btn {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            /* Адаптивность для кнопок с увеличенным шрифтом */
+            .block-btn {
+                font-size: 19px;
+                width: 210px;
+                padding: 13px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-circle, .menu-circle {
+                width: 55px;
+                height: 55px;
+                font-size: 24px;
+            }
+            
+            .site-title {
+                font-size: 28px;
+            }
+            
+            .site-title-box {
+                padding: 15px 25px;
+                margin-top: -15px;
+            }
+            
+            .site-title-container {
+                margin-top: -20px;
+                margin-bottom: 30px;
+            }
+            
+            .banner-container {
+                height: 200px;
+            }
+            
+            .banner-text h2 {
+                font-size: 22px;
+            }
+            
+            .banner-text p {
+                font-size: 16px;
+            }
+            
+            .artist-main-image,
+            .painting-main-image {
+                height: 250px;
+            }
+            
+            .events-image {
+                height: 200px;
+            }
+            
+            .directions-image {
+                height: 200px;
+            }
+            
+            .menu-content {
+                min-width: 160px;
+                top: 125px;
+                padding: 12px;
+            }
+            
+            .menu-content a {
+                font-size: 15px;
+                padding: 8px 16px;
+            }
+            
+            .footer-logo {
+                font-size: 26px;
+            }
+            
+            .block-btn {
+                width: 200px;
+                padding: 12px 25px;
+                font-size: 18px;
+            }
+            
+            .artists-btn, .paintings-btn {
+                margin: 30px auto 0;
+            }
+            
+            .footer {
+                padding: 25px 0 15px;
+                border-radius: 15px 15px 0 0;
+                margin-top: 40px;
+            }
+            
+            .scroll-top-btn {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <!-- Навигация -->
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo-circle">АХ</div>
+                <div class="menu-circle" id="menuBtn">
+                    <div class="burger-icon">
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                        <span class="burger-line"></span>
+                    </div>
+                </div>
+                
+                <div class="menu-content" id="menuContent">
+                    <a href="index.html" class="active"><i class="fas fa-home"></i> Главная</a>
+                    <a href="timeline.html"><i class="fas fa-clock"></i> Лента времени</a>
+                    <a href="artists.html"><i class="fas fa-palette"></i> Художники</a>
+                    <a href="artdirection.html"><i class="fas fa-directions"></i> Направления</a>
+                    <a href="paintings.html"><i class="fas fa-image"></i> Картины</a>
+                    <a href="events.html"><i class="fas fa-calendar-alt"></i> Мероприятия</a>
+                </div>
+                
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="Поиск по сайту..." id="searchInput">
+                    <div class="search-suggestions" id="searchSuggestions"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container">
+        <!-- Название "Арт-Хроника" -->
+        <section class="site-title-container">
+            <div class="site-title-box">
+                <h1 class="site-title">Арт-Хроника</h1>
+            </div>
+        </section>
+
+        <!-- Баннер и текст с 5 фото -->
+        <section class="banner-section">
+            <div class="banner-container" id="bannerContainer">
+                <!-- 1. Фото для блока "Картины" -->
+                <div class="banner-slide active">
+                    <img src="https://i.pinimg.com/736x/fd/16/db/fd16db77bd3871d35bf1dfae31ca5f6f.jpg" alt="Картины">
+                </div>
+                <!-- 2. Фото для блока "Художники" -->
+                <div class="banner-slide">
+                    <img src="https://artchive.ru/res/media/img/oy800/work/c7b/505210.jpg" alt="Художники">
+                </div>
+                <!-- 3. Фото для блока "Мероприятия" -->
+                <div class="banner-slide">
+                    <img src="https://io.sb.by/storage01/iblock/df7/df77b54e4637992c6537e322af436494/5184c5ca79eef5321fc9c85ead24aab5.jpg" alt="Мероприятия">
+                </div>
+                <!-- 4. Фото для блока "Направления" -->
+                <div class="banner-slide">
+                    <img src="https://avatars.mds.yandex.net/i?id=309daed24ee9497cedd97bc24cd5376d_l-7053604-images-thumbs&n=13" alt="Направления">
+                </div>
+                <!-- 5. Фото для блока "Лента времени" -->
+                <div class="banner-slide">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Olaus_Magnus_-_More_on_the_Location_and_Nature_of_the_Land_of_the_Skrickfinns.jpg/1280px-Olaus_Magnus_-_More_on_the_Location_and_Nature_of_the_Land_of_the_Skrickfinns.jpg" alt="Лента времени">
+                </div>
+            </div>
+            
+            <div class="banner-text">
+                <h2>История белорусского изобразительного искусства</h2>
+                <p>Исследуйте шедевры через хронологию, подробные статьи и виртуальные коллекции</p>
+            </div>
+        </section>
+
+        <!-- Блок: Лента времени -->
+        <section id="timeline" class="content-block">
+            <div class="block-title">Лента времени</div>
+            <div class="block-description">
+                <p>Весь путь белорусского искусства на одной временной шкале. Навигация по векам и десятилетиям, где ключевые события, произведения и имена связаны в единую наглядную историю. Кликайте на точки и открывайте новые страницы эпох — от средневековья до наших дней.</p>
+            </div>
+            
+            <div class="timeline-content">
+                <div class="timeline-images">
+                    <div class="timeline-image">
+                        <img src="https://cdnn11.img.sputnik.by/img/101337/36/1013373690_0:0:0:0_2072x0_60_0_0_7343a40d9e742d83b6d6e6a0a040c897.jpg" alt="Средневековье">
+                    </div>
+                    <div class="timeline-image">
+                        <img src="https://i.pinimg.com/originals/ff/57/c5/ff57c59a3084cb51101a860387fdc241.jpg" alt="Ренессанс">
+                    </div>
+                    <div class="timeline-image">
+                        <img src="https://avatars.mds.yandex.net/i?id=f166d21dd4e885583be7030018289b11_l-5323298-images-thumbs&ref=rim&n=13&w=721&h=1000" alt="Современность">
+                    </div>
+                </div>
+                
+                <a href="timeline.html" class="block-btn artists-btn">Подробнее</a>
+            </div>
+        </section>
+
+        <!-- Блок: Мероприятия -->
+        <section id="events" class="content-block">
+            <div class="block-title">Мероприятия</div>
+            <div class="block-description">
+                <p>Здесь вы найдёте анонсы выставок, лекций, экскурсий и мастер-классов, посвящённых белорусскому искусству. Будьте в центре событий.</p>
+            </div>
+            
+            <div class="events-content">
+                <div class="events-image">
+                    <img src="https://belarus-tr.gazprom.ru/d/story/28/143912/na7a8622.jpg" alt="Выставка белорусского искусства">
+                    <a href="events.html" class="block-btn events-btn">Подробнее</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок: Художники -->
+        <section id="artists" class="content-block">
+            <div class="block-title">Художники</div>
+            <div class="block-description">
+                <p>В этом разделе — подробные биографии, творческие пути и галереи работ ключевых мастеров. Узнайте историю искусства через истории его творцов.</p>
+            </div>
+            
+            <div class="artists-content">
+                <div class="artists-images">
+                    <div class="artist-main-image">
+                        <img src="https://i.pinimg.com/736x/e3/cd/05/e3cd056bbddedc3e15ef08284e7a2572.jpg" alt="Художник">
+                    </div>
+                    
+                    <div class="artist-secondary-images">
+                        <div class="artist-secondary-image">
+                            <img src="https://avatars.mds.yandex.net/get-entity_search/2360676/1212468059/SUx182" alt="Работа художника 1">
+                        </div>
+                        <div class="artist-secondary-image">
+                            <img src="https://cdnn11.img.sputnik.by/img/07e6/02/10/1060424799_0:438:2086:1611_1920x0_80_0_0_6e5e2b55f74d4d4061464cf99897b209.jpg" alt="Работа художника 2">
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="artists.html" class="block-btn artists-btn">Подробнее</a>
+            </div>
+        </section>
+
+        <!-- Блок: Направления -->
+        <section id="directions" class="content-block">
+            <div class="block-title">Направления</div>
+            <div class="block-description">
+                <p>Разберитесь в художественных течениях, которые формировали облик белорусского искусства в разные эпохи.</p>
+            </div>
+            
+            <div class="directions-content">
+                <div class="directions-image">
+                    <img src="https://media.izi.travel/910ebc41-f9a3-40d4-9ccf-3a07bc015aef/1bac8e3b-a239-411b-8081-09afd2b8134c_800x600.jpg" alt="Художественное направление">
+                    <a href="artdirection.html" class="block-btn directions-btn">Подробнее</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок: Картины с новой вертикальной фотографией -->
+        <section id="paintings" class="content-block">
+            <div class="block-title">Картины</div>
+            <div class="block-description">
+                <p>Виртуальная галерея шедевров. Изучайте детали, которые не видны на обычной репродукции, и составляйте свою собственную коллекцию фаворитов.</p>
+            </div>
+            
+            <div class="paintings-content">
+                <div class="paintings-images">
+                    <div class="painting-main-image">
+                        <!-- НОВОЕ ВЕРТИКАЛЬНОЕ ИЗОБРАЖЕНИЕ -->
+                        <img src="https://admin.artmuseum.by/Files/events/mikhail-savitcki-da-100-goddzia-z-dnia-naradzhennia/Share.jpg" alt="Картина белорусского художника">
+                    </div>
+                    
+                    <div class="painting-secondary-images">
+                        <div class="painting-secondary-image">
+                            <!-- Горизонтальное изображение 1 -->
+                            <img src="https://avatars.mds.yandex.net/i?id=5a5dfdde8bf913add916bc93fe496c0e_l-9293984-images-thumbs&n=13" alt="Белорусская картина">
+                        </div>
+                        <div class="painting-secondary-image">
+                            <!-- Горизонтальное изображение 2 -->
+                            <img src="https://i.ibb.co/Yf2F3bx/D7-F2-OMEW4-AE04p-X.jpg" alt="Белорусский пейзаж">
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="paintings.html" class="block-btn paintings-btn">Подробнее</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Art Chronicle</div>
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-text">© 2025 Art Chronicle. Все права защищены.</div>
+                    <div class="footer-text">Откройте для себя историю искусства Беларуси заново вместе с нами!</div>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-contact">
+                        <a href="mailto:art@chronicle.by">art@chronicle.by</a>
+                    </div>
+                    <div class="footer-contact">+375 (29) 239-49-94</div>
+                    <div class="copyright">Проект "Арт-Хроника" посвящен истории белорусского изобразительного искусства</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Кнопка "Наверх" -->
+    <div class="scroll-top-btn" id="scrollTopBtn">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Меню бургер
+        const menuBtn = document.getElementById('menuBtn');
+        const menuContent = document.getElementById('menuContent');
+        
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menuContent.classList.toggle('active');
+            
+            const burgerLines = menuBtn.querySelectorAll('.burger-line');
+            if (menuContent.classList.contains('active')) {
+                burgerLines[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                burgerLines[1].style.opacity = '0';
+                burgerLines[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                burgerLines[0].style.transform = 'none';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'none';
+            }
+        });
+
+        // Закрыть меню при клике вне его
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.menu-circle') && !event.target.closest('.menu-content') && menuContent.classList.contains('active')) {
+                menuContent.classList.remove('active');
+                const burgerLines = menuBtn.querySelectorAll('.burger-line');
+                burgerLines[0].style.transform = 'none';
+                burgerLines[1].style.opacity = '1';
+                burgerLines[2].style.transform = 'none';
+            }
+        });
+
+        // Карусель баннеров - 5 фото
+        const bannerContainer = document.getElementById('bannerContainer');
+        const bannerSlides = document.querySelectorAll('.banner-slide');
+        let currentSlide = 0;
+        
+        function changeSlide() {
+            bannerSlides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % bannerSlides.length;
+            bannerSlides[currentSlide].classList.add('active');
+            
+            // Настройка перехода по клику на баннер
+            bannerContainer.onclick = () => {
+                const blockIds = ['paintings', 'artists', 'events', 'directions', 'timeline'];
+                const blockId = blockIds[currentSlide];
+                const block = document.getElementById(blockId);
+                if (block) {
+                    window.scrollTo({
+                        top: block.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            };
+        }
+        
+        setInterval(changeSlide, 4000);
+
+        // Кнопка "Наверх"
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        
+        // Показать/скрыть кнопку при прокрутке
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        // Плавный скролл наверх при клике
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // ПОИСК ПО САЙТУ
+        const searchInput = document.getElementById('searchInput');
+        const searchSuggestions = document.getElementById('searchSuggestions');
+        
+        // База данных для поиска (все названия блоков, художники, картины, направления, мероприятия)
+        const searchData = [
+            // Главные разделы сайта
+            { name: "Главная страница", page: "index.html", category: "Раздел", keywords: ["главная", "домашняя", "home", "начало"] },
+            { name: "Лента времени", page: "timeline.html", category: "Раздел", keywords: ["лента времени", "хронология", "история", "время", "timeline", "средневековье", "ренессанс", "современность"] },
+            { name: "Художники", page: "artists.html", category: "Раздел", keywords: ["художники", "мастера", "творцы", "авторы", "artists", "биографии"] },
+            { name: "Направления", page: "artdirection.html", category: "Раздел", keywords: ["направления", "течения", "стили", "школы", "art direction", "художественные направления"] },
+            { name: "Картины", page: "paintings.html", category: "Раздел", keywords: ["картины", "полотна", "шедевры", "галерея", "paintings", "живопись", "произведения"] },
+            { name: "Мероприятия", page: "events.html", category: "Раздел", keywords: ["мероприятия", "выставки", "события", "лекции", "экскурсии", "мастер-классы", "events", "анонсы"] },
+            
+            // Художники (белорусские и связанные с Беларусью)
+            { name: "Марк Шагал", page: "artists.html", category: "Художник", keywords: ["марк шагал", "шагал", "chagall", "еврейский художник", "витебск"] },
+            { name: "Казимир Малевич", page: "artists.html", category: "Художник", keywords: ["казимир малевич", "малевич", "malevich", "супрематизм", "черный квадрат"] },
+            { name: "Наполеон Орда", page: "artists.html", category: "Художник", keywords: ["наполеон орда", "орда", "orda", "графика", "архитектура"] },
+            { name: "Язеп Дроздович", page: "artists.html", category: "Художник", keywords: ["язен дроздович", "дроздович", "drozdovich", "космос", "фольклор"] },
+            { name: "Витольд Бялыницкий-Бируля", page: "artists.html", category: "Художник", keywords: ["витольд бялыницкий-бируля", "бялыницкий-бируля", "бируля", "пейзажист", "зимние пейзажи"] },
+            { name: "Михаил Савицкий", page: "artists.html", category: "Художник", keywords: ["михаил савицкий", "савицкий", "savitsky", "военная тема", "реализм"] },
+            { name: "Леон Бакст", page: "artists.html", category: "Художник", keywords: ["леон бакст", "бакст", "bakst", "театр", "модерн", "костюмы"] },
+            { name: "Фердинанд Рущиц", page: "artists.html", category: "Художник", keywords: ["фердинанд рущиц", "рущиц", "rushchits", "пейзажи", "символизм"] },
+            
+            // Картины
+            { name: "Черный квадрат", page: "paintings.html", category: "Картина", keywords: ["черный квадрат", "малевич", "супрематизм", "абстракция"] },
+            { name: "Над городом", page: "paintings.html", category: "Картина", keywords: ["над городом", "шагал", "летящие влюбленные", "витебск"] },
+            { name: "Прогулка", page: "paintings.html", category: "Картина", keywords: ["прогулка", "шагал", "марк шагал", "влюбленные"] },
+            { name: "Партизаны", page: "paintings.html", category: "Картина", keywords: ["партизаны", "савицкий", "война", "подвиг"] },
+            { name: "Белорусский пейзаж", page: "paintings.html", category: "Картина", keywords: ["белорусский пейзаж", "природа", "пейзаж", "родина"] },
+            { name: "Витебск", page: "paintings.html", category: "Картина", keywords: ["витебск", "город", "архитектура", "родина шагала"] },
+            { name: "Зимний вечер", page: "paintings.html", category: "Картина", keywords: ["зимний вечер", "бялыницкий-бируля", "зима", "снег"] },
+            
+            // Художественные направления
+            { name: "Супрематизм", page: "artdirection.html", category: "Направление", keywords: ["супрематизм", "малевич", "геометрия", "абстракция", "основные формы"] },
+            { name: "Реализм", page: "artdirection.html", category: "Направление", keywords: ["реализм", "реальность", "правдивость", "савицкий", "жизнь как она есть"] },
+            { name: "Символизм", page: "artdirection.html", category: "Направление", keywords: ["символизм", "символы", "рущиц", "скрытый смысл", "метафоры"] },
+            { name: "Модерн", page: "artdirection.html", category: "Направление", keywords: ["модерн", "современное", "бакст", "новое искусство", "ар-нуво"] },
+            { name: "Романтизм", page: "artdirection.html", category: "Направление", keywords: ["романтизм", "эмоции", "чувства", "природа", "возвышенное"] },
+            { name: "Импрессионизм", page: "artdirection.html", category: "Направление", keywords: ["импрессионизм", "впечатление", "свет", "цвет", "мгновение"] },
+            
+            // Мероприятия
+            { name: "Выставка белорусского искусства", page: "events.html", category: "Мероприятие", keywords: ["выставка", "экспозиция", "музей", "картины", "открытие"] },
+            { name: "Лекция о Шагале", page: "events.html", category: "Мероприятие", keywords: ["лекция", "шагал", "искусствовед", "доклад", "витебск"] },
+            { name: "Экскурсия по музею", page: "events.html", category: "Мероприятие", keywords: ["экскурсия", "музей", "гид", "коллекция", "осмотр"] },
+            { name: "Мастер-класс по живописи", page: "events.html", category: "Мероприятие", keywords: ["мастер-класс", "живопись", "урок", "творчество", "обучение"] },
+            { name: "Конференция искусствоведов", page: "events.html", category: "Мероприятие", keywords: ["конференция", "искусствоведы", "доклады", "дискуссии", "наука"] },
+            
+            // Исторические периоды (лента времени)
+            { name: "Средневековье", page: "timeline.html", category: "Исторический период", keywords: ["средневековье", "средние века", "готы", "романский стиль", "фрески"] },
+            { name: "Ренессанс", page: "timeline.html", category: "Исторический период", keywords: ["ренессанс", "возрождение", "гуманизм", "перспектива", "античность"] },
+            { name: "Барокко", page: "timeline.html", category: "Исторический период", keywords: ["барокко", "пышность", "динамика", "контраст", "эмоции"] },
+            { name: "XX век", page: "timeline.html", category: "Исторический период", keywords: ["xx век", "двадцатый век", "авангард", "модернизм", "современное искусство"] },
+            { name: "Современность", page: "timeline.html", category: "Исторический период", keywords: ["современность", "наше время", "актуальное искусство", "инсталляции", "перформансы"] }
+        ];
+
+        // Функция для получения читаемого названия страницы
+        function getPageDisplayName(page) {
+            const pageNames = {
+                'index.html': 'главную',
+                'artists.html': 'художники',
+                'paintings.html': 'картины',
+                'timeline.html': 'лента времени',
+                'artdirection.html': 'направления',
+                'events.html': 'мероприятия'
+            };
+            
+            // Извлекаем имя файла (убираем возможные якоря)
+            const pageFile = page.split('#')[0];
+            return pageNames[pageFile] || pageFile;
+        }
+
+        // Функция поиска
+        function performSearch(query) {
+            query = query.toLowerCase().trim();
+            
+            if (!query) {
+                searchSuggestions.classList.remove('active');
+                return;
+            }
+            
+            // Фильтруем результаты
+            const results = searchData.filter(item => {
+                // Ищем в названии
+                if (item.name.toLowerCase().includes(query)) return true;
+                
+                // Ищем в ключевых словах
+                if (item.keywords.some(keyword => keyword.toLowerCase().includes(query))) return true;
+                
+                return false;
+            });
+            
+            // Сортируем результаты: сначала точные совпадения в названии
+            results.sort((a, b) => {
+                const aNameMatch = a.name.toLowerCase().includes(query);
+                const bNameMatch = b.name.toLowerCase().includes(query);
+                
+                if (aNameMatch && !bNameMatch) return -1;
+                if (!aNameMatch && bNameMatch) return 1;
+                
+                // Если оба совпадают или не совпадают в названии, сортируем по категории
+                return a.category.localeCompare(b.category);
+            });
+            
+            displaySearchResults(results);
+        }
+        
+        // Функция отображения результатов
+        function displaySearchResults(results) {
+            searchSuggestions.innerHTML = '';
+            
+            if (results.length === 0) {
+                const noResults = document.createElement('div');
+                noResults.className = 'search-suggestion-item';
+                noResults.innerHTML = '<i class="fas fa-search"></i><span>Ничего не найдено. Попробуйте другой запрос.</span>';
+                searchSuggestions.appendChild(noResults);
+            } else {
+                // Ограничиваем количество результатов
+                const limitedResults = results.slice(0, 10);
+                
+                let currentCategory = '';
+                
+                limitedResults.forEach(item => {
+                    // Добавляем заголовок категории, если она изменилась
+                    if (item.category !== currentCategory) {
+                        currentCategory = item.category;
+                        const categoryHeader = document.createElement('div');
+                        categoryHeader.className = 'search-suggestion-item';
+                        categoryHeader.style.background = '#e0e0e0';
+                        categoryHeader.style.fontWeight = 'bold';
+                        categoryHeader.innerHTML = `<i class="fas fa-folder"></i><span>${item.category}</span>`;
+                        searchSuggestions.appendChild(categoryHeader);
+                    }
+                    
+                    const suggestionItem = document.createElement('div');
+                    suggestionItem.className = 'search-suggestion-item';
+                    suggestionItem.innerHTML = `
+                        <i class="fas fa-${getIconForCategory(item.category)}"></i>
+                        <div>
+                            <div>${highlightMatch(item.name, searchInput.value)}</div>
+                            <div class="search-suggestion-category">Перейти на страницу ${getPageDisplayName(item.page)}</div>
+                        </div>
+                    `;
+                    
+                    suggestionItem.addEventListener('click', () => {
+                        window.location.href = item.page;
+                    });
+                    
+                    searchSuggestions.appendChild(suggestionItem);
+                });
+            }
+            
+            searchSuggestions.classList.add('active');
+        }
+        
+        // Функция подсветки совпадений
+        function highlightMatch(text, query) {
+            if (!query.trim()) return text;
+            
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<span style="background-color: #ffeb3b; font-weight: bold;">$1</span>');
+        }
+        
+        // Функция получения иконки для категории
+        function getIconForCategory(category) {
+            switch(category) {
+                case 'Раздел': return 'home';
+                case 'Художник': return 'palette';
+                case 'Картина': return 'image';
+                case 'Направление': return 'directions';
+                case 'Мероприятие': return 'calendar-alt';
+                case 'Исторический период': return 'clock';
+                default: return 'search';
+            }
+        }
+        
+        // Обработчики событий для поиска
+        searchInput.addEventListener('input', () => {
+            performSearch(searchInput.value);
+        });
+        
+        searchInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                const query = searchInput.value.trim();
+                if (query) {
+                    // При нажатии Enter переходим к первому результату, если есть результаты
+                    const firstResult = searchData.find(item => 
+                        item.name.toLowerCase().includes(query.toLowerCase()) || 
+                        item.keywords.some(keyword => keyword.toLowerCase().includes(query.toLowerCase()))
+                    );
+                    
+                    if (firstResult) {
+                        window.location.href = firstResult.page;
+                    } else {
+                        alert(`По запросу "${query}" ничего не найдено. Попробуйте другой запрос.`);
+                    }
+                }
+            }
+        });
+        
+        // Закрываем подсказки при клике вне поля поиска
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.search-container') && searchSuggestions.classList.contains('active')) {
+                searchSuggestions.classList.remove('active');
+            }
+        });
+        
+        // Пример поиска при загрузке страницы с демонстрацией
+        window.addEventListener('load', () => {
+            // Можно показать несколько популярных запросов
+            const popularQueries = [
+                "Шагал", "Малевич", "супрематизм", "выставка", "картины"
+            ];
+            
+            // Можно добавить подсказку в placeholder
+            let queryIndex = 0;
+            setInterval(() => {
+                searchInput.placeholder = `Поиск по сайту... Например: ${popularQueries[queryIndex]}`;
+                queryIndex = (queryIndex + 1) % popularQueries.length;
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
