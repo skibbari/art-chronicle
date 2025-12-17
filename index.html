@@ -1483,227 +1483,258 @@
             });
         });
 
-        // ПОИСК ПО САЙТУ
-        const searchInput = document.getElementById('searchInput');
-        const searchSuggestions = document.getElementById('searchSuggestions');
+// ПОИСК ПО САЙТУ (ОБНОВЛЕННЫЙ)
+const searchInput = document.getElementById('searchInput');
+const searchSuggestions = document.getElementById('searchSuggestions');
+
+// База данных для поиска (все названия блоков, художники, картины, направления, мероприятия, периоды времени)
+const searchData = [
+    // Главные разделы сайта
+    { name: "Главная страница", page: "index.html", category: "Раздел", keywords: ["главная", "домашняя", "home", "начало", "арт-хроника"] },
+    { name: "Лента времени", page: "timeline.html", category: "Раздел", keywords: ["лента времени", "хронология", "история", "время", "timeline", "эпохи", "периоды"] },
+    { name: "Художники", page: "artists.html", category: "Раздел", keywords: ["художники", "мастера", "творцы", "авторы", "artists", "биографии", "живописцы"] },
+    { name: "Направления", page: "artdirection.html", category: "Раздел", keywords: ["направления", "течения", "стили", "школы", "art direction", "художественные направления", "стили искусства"] },
+    { name: "Картины", page: "paintings.html", category: "Раздел", keywords: ["картины", "полотна", "шедевры", "галерея", "paintings", "живопись", "произведения", "коллекция"] },
+    { name: "Мероприятия", page: "events.html", category: "Раздел", keywords: ["мероприятия", "выставки", "события", "лекции", "экскурсии", "мастер-классы", "events", "анонсы"] },
+    
+    // Художники (белорусские и связанные с Беларусью) - с timeline.html
+    { name: "Марк Шагал", page: "artists.html", category: "Художник", keywords: ["марк шагал", "шагал", "chagall", "еврейский художник", "витебск", "авангард", "париж"] },
+    { name: "Казимир Малевич", page: "artists.html", category: "Художник", keywords: ["казимир малевич", "малевич", "malevich", "супрематизм", "черный квадрат", "уновис", "витебск"] },
+    { name: "Наполеон Орда", page: "artists.html", category: "Художник", keywords: ["наполеон орда", "орда", "orda", "графика", "архитектура", "акварели", "путешествия"] },
+    { name: "Язеп Дроздович", page: "artists.html", category: "Художник", keywords: ["язен дроздович", "дроздович", "drozdovich", "космос", "фольклор", "этнограф", "фантастика"] },
+    { name: "Витольд Бялыницкий-Бируля", page: "artists.html", category: "Художник", keywords: ["витольд бялыницкий-бируля", "бялыницкий-бируля", "бируля", "пейзажист", "зимние пейзажи", "левитан"] },
+    { name: "Михаил Савицкий", page: "artists.html", category: "Художник", keywords: ["михаил савицкий", "савицкий", "savitsky", "военная тема", "реализм", "цифры на сердце", "герой беларуси"] },
+    { name: "Леон Бакст", page: "artists.html", category: "Художник", keywords: ["леон бакст", "бакст", "bakst", "театр", "модерн", "костюмы", "дягилев", "русские сезоны"] },
+    { name: "Фердинанд Рущиц", page: "artists.html", category: "Художник", keywords: ["фердинанд рущиц", "рущиц", "rushchits", "пейзажи", "символизм", "вильнюс"] },
+    { name: "Хаим Сутин", page: "artists.html", category: "Художник", keywords: ["хаим сутин", "сутин", "soutine", "экспрессионизм", "парижская школа", "смиловичи"] },
+    { name: "Иван Хруцкий", page: "artists.html", category: "Художник", keywords: ["иван хруцкий", "хруцкий", "hrutsky", "натюрморты", "классицизм", "цветы и фрукты"] },
+    { name: "Май Данциг", page: "artists.html", category: "Художник", keywords: ["май данциг", "данциг", "dantsig", "суровый стиль", "городские пейзажи", "модернизм"] },
+    { name: "Виталий Цвирко", page: "artists.html", category: "Художник", keywords: ["виталий цвирко", "цвирко", "tsvirko", "пейзажи", "природа", "белорусские пейзажи"] },
+    { name: "Василий Шарангович", page: "artists.html", category: "Художник", keywords: ["василий шарангович", "шарангович", "sharangovich", "графика", "гравюры", "народный художник"] },
+    
+    // Картины - с paintings.html
+    { name: "Я и деревня", page: "paintings.html", category: "Картина", keywords: ["я и деревня", "шагал", "1911", "авангард", "кубизм", "витебск"] },
+    { name: "Черный квадрат", page: "paintings.html", category: "Картина", keywords: ["черный квадрат", "малевич", "супрематизм", "абстракция", "1915"] },
+    { name: "Натюрморт со свечой", page: "paintings.html", category: "Картина", keywords: ["натюрморт со свечой", "хруцкий", "цветы", "фрукты", "классицизм"] },
+    { name: "Крест Евфросинии Полоцкой", page: "paintings.html", category: "Картина", keywords: ["крест евфросинии полоцкой", "евфросиния полоцкая", "богша", "средневековье", "ювелирное искусство"] },
+    { name: "Замок в Лиде", page: "paintings.html", category: "Картина", keywords: ["замок в лиде", "лидский замок", "орда", "акварель", "архитектура"] },
+    { name: "Цифры на сердце", page: "paintings.html", category: "Картина", keywords: ["цифры на сердце", "савицкий", "война", "концлагерь", "память"] },
+    { name: "Партизанская мадонна", page: "paintings.html", category: "Картина", keywords: ["партизанская мадонна", "савицкий", "война", "мадонна", "героизм"] },
+    { name: "Чернобыльская мадонна", page: "paintings.html", category: "Картина", keywords: ["чернобыльская мадонна", "савицкий", "чернобыль", "трагедия", "1986"] },
+    
+    // Художественные направления - с artdirection.html
+    { name: "Древнерусская иконопись", page: "artdirection.html", category: "Направление", keywords: ["древнерусская иконопись", "иконопись", "средневековье", "византия", "религиозное искусство", "фрески"] },
+    { name: "Ренессанс", page: "artdirection.html", category: "Направление", keywords: ["ренессанс", "возрождение", "гуманизм", "античность", "xvi век", "итальянское влияние"] },
+    { name: "Барокко и сарматизм", page: "artdirection.html", category: "Направление", keywords: ["барокко", "сарматизм", "xvii-xviii века", "пышность", "динамика", "шляхетская культура", "магнаты"] },
+    { name: "Классицизм", page: "artdirection.html", category: "Направление", keywords: ["классицизм", "античные образцы", "гармония", "симметрия", "xviii-xix века", "академическое искусство"] },
+    { name: "Романтизм", page: "artdirection.html", category: "Направление", keywords: ["романтизм", "эмоции", "природа", "история", "xix век", "национальное возрождение"] },
+    { name: "Реализм", page: "artdirection.html", category: "Направление", keywords: ["реализм", "объективность", "социальная тема", "типизация", "xix-xx века", "народная жизнь"] },
+    { name: "Модерн", page: "artdirection.html", category: "Направление", keywords: ["модерн", "ар-нуво", "декоративность", "плавные линии", "конец xix века", "синтез искусств"] },
+    { name: "Авангард", page: "artdirection.html", category: "Направление", keywords: ["авангард", "супрематизм", "эксперимент", "1910-1930", "малевич", "уновис", "витебск"] },
+    { name: "Социалистический реализм", page: "artdirection.html", category: "Направление", keywords: ["социалистический реализм", "соцреализм", "1930-1980", "идейность", "партийность", "оптимизм"] },
+    { name: "Постмодернизм", page: "artdirection.html", category: "Направление", keywords: ["постмодернизм", "ирония", "цитатность", "1990-е", "эклектизм", "современное искусство"] },
+    { name: "Современное искусство", page: "artdirection.html", category: "Направление", keywords: ["современное искусство", "мультимедиа", "инсталляции", "2000-е", "цифровое искусство", "перформанс"] },
+    
+    // Исторические периоды - с timeline.html
+    { name: "Средневековье (XII-XV вв.)", page: "timeline.html", category: "Исторический период", keywords: ["средневековье", "средние века", "xii-xv века", "древнерусское искусство", "иконопись", "фрески", "книжная миниатюра"] },
+    { name: "Ренессанс (XVI в.)", page: "timeline.html", category: "Исторический период", keywords: ["ренессанс", "xvi век", "возрождение", "гуманизм", "портрет", "графика", "книгопечатание"] },
+    { name: "Барокко (XVII-XVIII вв.)", page: "timeline.html", category: "Исторический период", keywords: ["барокко", "xvii-xviii века", "сарматский портрет", "магнаты", "костелы", "дворцы", "архитектура глаубица"] },
+    { name: "Классицизм (XVIII-XIX вв.)", page: "timeline.html", category: "Исторический период", keywords: ["классицизм", "xviii-xix века", "просвещение", "дворцово-парковые ансамбли", "историческая живопись", "образование"] },
+    { name: "XIX век: Романтизм и Реализм", page: "timeline.html", category: "Исторический период", keywords: ["xix век", "романтизм", "реализм", "национальное возрождение", "народная культура", "крестьянская тема", "художественная школа"] },
+    { name: "Авангард и Модернизм (XX в.)", page: "timeline.html", category: "Исторический период", keywords: ["авангард", "модернизм", "xx век", "супрематизм", "кубизм", "экспрессионизм", "эмиграция"] },
+    { name: "XX-XXI века: Искусство современности", page: "timeline.html", category: "Исторический период", keywords: ["xx-xxi века", "современность", "постмодернизм", "новые медиа", "инсталляции", "перформансы", "цифровое искусство"] },
+    
+    // Архитектурные памятники - с timeline.html
+    { name: "Мирский замок", page: "timeline.html", category: "Архитектура", keywords: ["мирский замок", "замок", "архитектура", "unesco", "ренессанс", "готы"] },
+    { name: "Несвижский замок", page: "timeline.html", category: "Архитектура", keywords: ["несвижский замок", "радзивиллы", "резиденция", "дворец", "парк", "unesco"] },
+    { name: "Крест Евфросинии Полоцкой", page: "timeline.html", category: "Архитектура", keywords: ["крест евфросинии полоцкой", "реликвия", "ювелирное искусство", "богша", "1161 год", "православие"] },
+    
+    // Мероприятия
+    { name: "Выставка белорусского искусства", page: "events.html", category: "Мероприятие", keywords: ["выставка", "экспозиция", "музей", "картины", "открытие", "вернисаж"] },
+    { name: "Лекция о Шагале", page: "events.html", category: "Мероприятие", keywords: ["лекция", "шагал", "искусствовед", "доклад", "витебск", "биография"] },
+    { name: "Экскурсия по музею", page: "events.html", category: "Мероприятие", keywords: ["экскурсия", "музей", "гид", "коллекция", "осмотр", "туры"] },
+    { name: "Мастер-класс по живописи", page: "events.html", category: "Мероприятие", keywords: ["мастер-класс", "живопись", "урок", "творчество", "обучение", "рисование"] },
+    { name: "Конференция искусствоведов", page: "events.html", category: "Мероприятие", keywords: ["конференция", "искусствоведы", "доклады", "дискуссии", "наука", "исследования"] },
+    
+    // Ключевые термины
+    { name: "Супрематизм", page: "artdirection.html", category: "Термин", keywords: ["супрематизм", "малевич", "геометрия", "основные формы", "квадрат", "круг", "крест"] },
+    { name: "Сарматизм", page: "artdirection.html", category: "Термин", keywords: ["сарматизм", "шляхта", "идеология", "портрет", "магнаты", "генеалогия"] },
+    { name: "Витебская художественная школа", page: "artdirection.html", category: "Термин", keywords: ["витебская школа", "витебск", "шагал", "малевич", "уновис", "авангард", "художественное училище"] }
+];
+
+// Функция для получения читаемого названия страницы
+function getPageDisplayName(page) {
+    const pageNames = {
+        'index.html': 'главную страницу',
+        'artists.html': 'страницу художников',
+        'paintings.html': 'галерею картин',
+        'timeline.html': 'ленту времени',
+        'artdirection.html': 'раздел направлений',
+        'events.html': 'анонсы мероприятий'
+    };
+    
+    // Извлекаем имя файла (убираем возможные якоря)
+    const pageFile = page.split('#')[0];
+    return pageNames[pageFile] || pageFile;
+}
+
+// Функция поиска
+function performSearch(query) {
+    query = query.toLowerCase().trim();
+    
+    if (!query) {
+        searchSuggestions.classList.remove('active');
+        return;
+    }
+    
+    // Фильтруем результаты
+    const results = searchData.filter(item => {
+        // Ищем в названии
+        if (item.name.toLowerCase().includes(query)) return true;
         
-        // База данных для поиска (все названия блоков, художники, картины, направления, мероприятия)
-        const searchData = [
-            // Главные разделы сайта
-            { name: "Главная страница", page: "index.html", category: "Раздел", keywords: ["главная", "домашняя", "home", "начало"] },
-            { name: "Лента времени", page: "timeline.html", category: "Раздел", keywords: ["лента времени", "хронология", "история", "время", "timeline", "средневековье", "ренессанс", "современность"] },
-            { name: "Художники", page: "artists.html", category: "Раздел", keywords: ["художники", "мастера", "творцы", "авторы", "artists", "биографии"] },
-            { name: "Направления", page: "artdirection.html", category: "Раздел", keywords: ["направления", "течения", "стили", "школы", "art direction", "художественные направления"] },
-            { name: "Картины", page: "paintings.html", category: "Раздел", keywords: ["картины", "полотна", "шедевры", "галерея", "paintings", "живопись", "произведения"] },
-            { name: "Мероприятия", page: "events.html", category: "Раздел", keywords: ["мероприятия", "выставки", "события", "лекции", "экскурсии", "мастер-классы", "events", "анонсы"] },
-            
-            // Художники (белорусские и связанные с Беларусью)
-            { name: "Марк Шагал", page: "artists.html", category: "Художник", keywords: ["марк шагал", "шагал", "chagall", "еврейский художник", "витебск"] },
-            { name: "Казимир Малевич", page: "artists.html", category: "Художник", keywords: ["казимир малевич", "малевич", "malevich", "супрематизм", "черный квадрат"] },
-            { name: "Наполеон Орда", page: "artists.html", category: "Художник", keywords: ["наполеон орда", "орда", "orda", "графика", "архитектура"] },
-            { name: "Язеп Дроздович", page: "artists.html", category: "Художник", keywords: ["язен дроздович", "дроздович", "drozdovich", "космос", "фольклор"] },
-            { name: "Витольд Бялыницкий-Бируля", page: "artists.html", category: "Художник", keywords: ["витольд бялыницкий-бируля", "бялыницкий-бируля", "бируля", "пейзажист", "зимние пейзажи"] },
-            { name: "Михаил Савицкий", page: "artists.html", category: "Художник", keywords: ["михаил савицкий", "савицкий", "savitsky", "военная тема", "реализм"] },
-            { name: "Леон Бакст", page: "artists.html", category: "Художник", keywords: ["леон бакст", "бакст", "bakst", "театр", "модерн", "костюмы"] },
-            { name: "Фердинанд Рущиц", page: "artists.html", category: "Художник", keywords: ["фердинанд рущиц", "рущиц", "rushchits", "пейзажи", "символизм"] },
-            
-            // Картины
-            { name: "Черный квадрат", page: "paintings.html", category: "Картина", keywords: ["черный квадрат", "малевич", "супрематизм", "абстракция"] },
-            { name: "Над городом", page: "paintings.html", category: "Картина", keywords: ["над городом", "шагал", "летящие влюбленные", "витебск"] },
-            { name: "Прогулка", page: "paintings.html", category: "Картина", keywords: ["прогулка", "шагал", "марк шагал", "влюбленные"] },
-            { name: "Партизаны", page: "paintings.html", category: "Картина", keywords: ["партизаны", "савицкий", "война", "подвиг"] },
-            { name: "Белорусский пейзаж", page: "paintings.html", category: "Картина", keywords: ["белорусский пейзаж", "природа", "пейзаж", "родина"] },
-            { name: "Витебск", page: "paintings.html", category: "Картина", keywords: ["витебск", "город", "архитектура", "родина шагала"] },
-            { name: "Зимний вечер", page: "paintings.html", category: "Картина", keywords: ["зимний вечер", "бялыницкий-бируля", "зима", "снег"] },
-            
-            // Художественные направления
-            { name: "Супрематизм", page: "artdirection.html", category: "Направление", keywords: ["супрематизм", "малевич", "геометрия", "абстракция", "основные формы"] },
-            { name: "Реализм", page: "artdirection.html", category: "Направление", keywords: ["реализм", "реальность", "правдивость", "савицкий", "жизнь как она есть"] },
-            { name: "Символизм", page: "artdirection.html", category: "Направление", keywords: ["символизм", "символы", "рущиц", "скрытый смысл", "метафоры"] },
-            { name: "Модерн", page: "artdirection.html", category: "Направление", keywords: ["модерн", "современное", "бакст", "новое искусство", "ар-нуво"] },
-            { name: "Романтизм", page: "artdirection.html", category: "Направление", keywords: ["романтизм", "эмоции", "чувства", "природа", "возвышенное"] },
-            { name: "Импрессионизм", page: "artdirection.html", category: "Направление", keywords: ["импрессионизм", "впечатление", "свет", "цвет", "мгновение"] },
-            
-            // Мероприятия
-            { name: "Выставка белорусского искусства", page: "events.html", category: "Мероприятие", keywords: ["выставка", "экспозиция", "музей", "картины", "открытие"] },
-            { name: "Лекция о Шагале", page: "events.html", category: "Мероприятие", keywords: ["лекция", "шагал", "искусствовед", "доклад", "витебск"] },
-            { name: "Экскурсия по музею", page: "events.html", category: "Мероприятие", keywords: ["экскурсия", "музей", "гид", "коллекция", "осмотр"] },
-            { name: "Мастер-класс по живописи", page: "events.html", category: "Мероприятие", keywords: ["мастер-класс", "живопись", "урок", "творчество", "обучение"] },
-            { name: "Конференция искусствоведов", page: "events.html", category: "Мероприятие", keywords: ["конференция", "искусствоведы", "доклады", "дискуссии", "наука"] },
-            
-            // Исторические периоды (лента времени)
-            { name: "Средневековье", page: "timeline.html", category: "Исторический период", keywords: ["средневековье", "средние века", "готы", "романский стиль", "фрески"] },
-            { name: "Ренессанс", page: "timeline.html", category: "Исторический период", keywords: ["ренессанс", "возрождение", "гуманизм", "перспектива", "античность"] },
-            { name: "Барокко", page: "timeline.html", category: "Исторический период", keywords: ["барокко", "пышность", "динамика", "контраст", "эмоции"] },
-            { name: "XX век", page: "timeline.html", category: "Исторический период", keywords: ["xx век", "двадцатый век", "авангард", "модернизм", "современное искусство"] },
-            { name: "Современность", page: "timeline.html", category: "Исторический период", keywords: ["современность", "наше время", "актуальное искусство", "инсталляции", "перформансы"] }
-        ];
+        // Ищем в ключевых словах
+        if (item.keywords.some(keyword => keyword.toLowerCase().includes(query))) return true;
+        
+        return false;
+    });
+    
+    // Сортируем результаты: сначала точные совпадения в названии
+    results.sort((a, b) => {
+        const aNameMatch = a.name.toLowerCase().includes(query);
+        const bNameMatch = b.name.toLowerCase().includes(query);
+        
+        if (aNameMatch && !bNameMatch) return -1;
+        if (!aNameMatch && bNameMatch) return 1;
+        
+        // Если оба совпадают или не совпадают в названии, сортируем по категории
+        return a.category.localeCompare(b.category);
+    });
+    
+    displaySearchResults(results);
+}
 
-        // Функция для получения читаемого названия страницы
-        function getPageDisplayName(page) {
-            const pageNames = {
-                'index.html': 'главную',
-                'artists.html': 'художники',
-                'paintings.html': 'картины',
-                'timeline.html': 'лента времени',
-                'artdirection.html': 'направления',
-                'events.html': 'мероприятия'
-            };
-            
-            // Извлекаем имя файла (убираем возможные якоря)
-            const pageFile = page.split('#')[0];
-            return pageNames[pageFile] || pageFile;
-        }
-
-        // Функция поиска
-        function performSearch(query) {
-            query = query.toLowerCase().trim();
-            
-            if (!query) {
-                searchSuggestions.classList.remove('active');
-                return;
+// Функция отображения результатов
+function displaySearchResults(results) {
+    searchSuggestions.innerHTML = '';
+    
+    if (results.length === 0) {
+        const noResults = document.createElement('div');
+        noResults.className = 'search-suggestion-item';
+        noResults.innerHTML = '<i class="fas fa-search"></i><span>Ничего не найдено. Попробуйте другой запрос.</span>';
+        searchSuggestions.appendChild(noResults);
+    } else {
+        // Ограничиваем количество результатов
+        const limitedResults = results.slice(0, 10);
+        
+        let currentCategory = '';
+        
+        limitedResults.forEach(item => {
+            // Добавляем заголовок категории, если она изменилась
+            if (item.category !== currentCategory) {
+                currentCategory = item.category;
+                const categoryHeader = document.createElement('div');
+                categoryHeader.className = 'search-suggestion-item';
+                categoryHeader.style.background = '#e0e0e0';
+                categoryHeader.style.fontWeight = 'bold';
+                categoryHeader.innerHTML = `<i class="fas fa-folder"></i><span>${item.category}</span>`;
+                searchSuggestions.appendChild(categoryHeader);
             }
             
-            // Фильтруем результаты
-            const results = searchData.filter(item => {
-                // Ищем в названии
-                if (item.name.toLowerCase().includes(query)) return true;
-                
-                // Ищем в ключевых словах
-                if (item.keywords.some(keyword => keyword.toLowerCase().includes(query))) return true;
-                
-                return false;
+            const suggestionItem = document.createElement('div');
+            suggestionItem.className = 'search-suggestion-item';
+            suggestionItem.innerHTML = `
+                <i class="fas fa-${getIconForCategory(item.category)}"></i>
+                <div>
+                    <div>${highlightMatch(item.name, searchInput.value)}</div>
+                    <div class="search-suggestion-category">Перейти на ${getPageDisplayName(item.page)}</div>
+                </div>
+            `;
+            
+            suggestionItem.addEventListener('click', () => {
+                window.location.href = item.page;
             });
             
-            // Сортируем результаты: сначала точные совпадения в названии
-            results.sort((a, b) => {
-                const aNameMatch = a.name.toLowerCase().includes(query);
-                const bNameMatch = b.name.toLowerCase().includes(query);
-                
-                if (aNameMatch && !bNameMatch) return -1;
-                if (!aNameMatch && bNameMatch) return 1;
-                
-                // Если оба совпадают или не совпадают в названии, сортируем по категории
-                return a.category.localeCompare(b.category);
-            });
+            searchSuggestions.appendChild(suggestionItem);
+        });
+    }
+    
+    searchSuggestions.classList.add('active');
+}
+
+// Функция подсветки совпадений
+function highlightMatch(text, query) {
+    if (!query.trim()) return text;
+    
+    const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+    return text.replace(regex, '<span style="background-color: #ffeb3b; font-weight: bold;">$1</span>');
+}
+
+// Функция экранирования специальных символов для регулярных выражений
+function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// Функция получения иконки для категории
+function getIconForCategory(category) {
+    switch(category) {
+        case 'Раздел': return 'home';
+        case 'Художник': return 'palette';
+        case 'Картина': return 'image';
+        case 'Направление': return 'directions';
+        case 'Мероприятие': return 'calendar-alt';
+        case 'Исторический период': return 'clock';
+        case 'Архитектура': return 'landmark';
+        case 'Термин': return 'book';
+        default: return 'search';
+    }
+}
+
+// Обработчики событий для поиска
+searchInput.addEventListener('input', () => {
+    performSearch(searchInput.value);
+});
+
+searchInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if (query) {
+            // При нажатии Enter переходим к первому результату, если есть результаты
+            const firstResult = searchData.find(item => 
+                item.name.toLowerCase().includes(query.toLowerCase()) || 
+                item.keywords.some(keyword => keyword.toLowerCase().includes(query.toLowerCase()))
+            );
             
-            displaySearchResults(results);
-        }
-        
-        // Функция отображения результатов
-        function displaySearchResults(results) {
-            searchSuggestions.innerHTML = '';
-            
-            if (results.length === 0) {
-                const noResults = document.createElement('div');
-                noResults.className = 'search-suggestion-item';
-                noResults.innerHTML = '<i class="fas fa-search"></i><span>Ничего не найдено. Попробуйте другой запрос.</span>';
-                searchSuggestions.appendChild(noResults);
+            if (firstResult) {
+                window.location.href = firstResult.page;
             } else {
-                // Ограничиваем количество результатов
-                const limitedResults = results.slice(0, 10);
-                
-                let currentCategory = '';
-                
-                limitedResults.forEach(item => {
-                    // Добавляем заголовок категории, если она изменилась
-                    if (item.category !== currentCategory) {
-                        currentCategory = item.category;
-                        const categoryHeader = document.createElement('div');
-                        categoryHeader.className = 'search-suggestion-item';
-                        categoryHeader.style.background = '#e0e0e0';
-                        categoryHeader.style.fontWeight = 'bold';
-                        categoryHeader.innerHTML = `<i class="fas fa-folder"></i><span>${item.category}</span>`;
-                        searchSuggestions.appendChild(categoryHeader);
-                    }
-                    
-                    const suggestionItem = document.createElement('div');
-                    suggestionItem.className = 'search-suggestion-item';
-                    suggestionItem.innerHTML = `
-                        <i class="fas fa-${getIconForCategory(item.category)}"></i>
-                        <div>
-                            <div>${highlightMatch(item.name, searchInput.value)}</div>
-                            <div class="search-suggestion-category">Перейти на страницу ${getPageDisplayName(item.page)}</div>
-                        </div>
-                    `;
-                    
-                    suggestionItem.addEventListener('click', () => {
-                        window.location.href = item.page;
-                    });
-                    
-                    searchSuggestions.appendChild(suggestionItem);
-                });
-            }
-            
-            searchSuggestions.classList.add('active');
-        }
-        
-        // Функция подсветки совпадений
-        function highlightMatch(text, query) {
-            if (!query.trim()) return text;
-            
-            const regex = new RegExp(`(${query})`, 'gi');
-            return text.replace(regex, '<span style="background-color: #ffeb3b; font-weight: bold;">$1</span>');
-        }
-        
-        // Функция получения иконки для категории
-        function getIconForCategory(category) {
-            switch(category) {
-                case 'Раздел': return 'home';
-                case 'Художник': return 'palette';
-                case 'Картина': return 'image';
-                case 'Направление': return 'directions';
-                case 'Мероприятие': return 'calendar-alt';
-                case 'Исторический период': return 'clock';
-                default: return 'search';
+                alert(`По запросу "${query}" ничего не найдено. Попробуйте другой запрос.`);
             }
         }
-        
-        // Обработчики событий для поиска
-        searchInput.addEventListener('input', () => {
-            performSearch(searchInput.value);
-        });
-        
-        searchInput.addEventListener('keypress', (event) => {
-            if (event.key === 'Enter') {
-                const query = searchInput.value.trim();
-                if (query) {
-                    // При нажатии Enter переходим к первому результату, если есть результаты
-                    const firstResult = searchData.find(item => 
-                        item.name.toLowerCase().includes(query.toLowerCase()) || 
-                        item.keywords.some(keyword => keyword.toLowerCase().includes(query.toLowerCase()))
-                    );
-                    
-                    if (firstResult) {
-                        window.location.href = firstResult.page;
-                    } else {
-                        alert(`По запросу "${query}" ничего не найдено. Попробуйте другой запрос.`);
-                    }
-                }
-            }
-        });
-        
-        // Закрываем подсказки при клике вне поля поиска
-        document.addEventListener('click', (event) => {
-            if (!event.target.closest('.search-container') && searchSuggestions.classList.contains('active')) {
-                searchSuggestions.classList.remove('active');
-            }
-        });
-        
-        // Пример поиска при загрузке страницы с демонстрацией
-        window.addEventListener('load', () => {
-            // Можно показать несколько популярных запросов
-            const popularQueries = [
-                "Шагал", "Малевич", "супрематизм", "выставка", "картины"
-            ];
-            
-            // Можно добавить подсказку в placeholder
-            let queryIndex = 0;
-            setInterval(() => {
-                searchInput.placeholder = `Поиск по сайту... Например: ${popularQueries[queryIndex]}`;
-                queryIndex = (queryIndex + 1) % popularQueries.length;
-            }, 3000);
-        });
+    }
+});
+
+// Закрываем подсказки при клике вне поля поиска
+document.addEventListener('click', (event) => {
+    if (!event.target.closest('.search-container') && searchSuggestions.classList.contains('active')) {
+        searchSuggestions.classList.remove('active');
+    }
+});
+
+// Пример поиска при загрузке страницы с демонстрацией
+window.addEventListener('load', () => {
+    // Можно показать несколько популярных запросов
+    const popularQueries = [
+        "Шагал", "Малевич", "супрематизм", "картины", "средневековье", 
+        "барокко", "натюрморт", "хруцкий", "савицкий", "романтизм"
+    ];
+    
+    // Можно добавить подсказку в placeholder
+    let queryIndex = 0;
+    setInterval(() => {
+        searchInput.placeholder = `Поиск по сайту... Например: ${popularQueries[queryIndex]}`;
+        queryIndex = (queryIndex + 1) % popularQueries.length;
+    }, 3000);
+});
     </script>
 </body>
 </html>
